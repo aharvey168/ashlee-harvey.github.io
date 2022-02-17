@@ -57,7 +57,7 @@ function add(animals, animal) {
     for (var i = 0; i < animals.length; i++){
         if (animals[i].name.length > 0 && animals[i].species.length > 0 && animals[i].name !== animal.name){
             return animals.unshift(animal);
-        } else
+        } 
     }
 }
 
