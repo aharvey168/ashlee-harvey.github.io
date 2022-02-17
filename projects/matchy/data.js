@@ -115,7 +115,8 @@ animals.push(bird);
 // Step 7 - Making Friends ///////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 /**list of friends will be in an array. I think the friends should be 
-in an array because is best to store list-like items.*/
+in an array because is best to store list-like items.*
+*/
 //Create a variable called `friends` and assign it to the data structure
 var friends = [];
 /*Write a function called `getRandom` takes "animals" array as input
@@ -125,10 +126,10 @@ function getRandom(animals) {
 
   return Math.floor(Math.random(animals.length -1))
 }
-
+console.log("friends"); 
 /*add the `friends` list as a **property** also named `friends` on
  one of the animals in the `animals` array */
-
+ animals[0]["friends"] = friends; 
 /**
  * Nice work! You're done Part 1. Pat yourself on the back and
  * move onto Part 2 in the file called "functions.js"
