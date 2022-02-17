@@ -1,8 +1,8 @@
 # ashlee-harvey.github.io
 
 **How to Install New Projects**
-1. In your terminal, type => code code ~/.bashrc
-2. On line 4 of .bashrc file enter => export CHE_PROJECTS_ROOT=/workspave
+1. In your terminal, type => code ~/.bashrc
+2. On line 4 of .bashrc file enter => export CHE_PROJECTS_ROOT=/workspace
 3. Close .bashrc
 4. Close terminal 
 5. Reopen terminal
