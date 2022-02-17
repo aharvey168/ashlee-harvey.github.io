@@ -30,20 +30,36 @@ function search(animals, name) {
 // Step 2 - Replace //////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 function replace(animals, name, replacement) {
-
+    for (var i = 0; i < animals.length; i++) {
+        if(animals[i].name === name){
+            return animals.splice(i, 1, replacement)
+        }
+    }
 }
 
 
 //////////////////////////////////////////////////////////////////////
 // Step 3 - Remove ///////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
-
+function remove(animals, name) {
+    for (var i = 0; i < animals.length; i++) {
+        if (animals[i].name === name){
+            return animals.splice(i, 1);
+        }
+    }
+}
 
 
 //////////////////////////////////////////////////////////////////////
 // Step 4 - Add ///////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
-
+function add(animals, animal) {
+    for (var i = 0; i < animals.length; i++){
+        if (animals[i].name.length > 0 && animals[i].species.length > 0 && animals[i].name !== animal.name){
+            return animals.unshift(animal);
+        } else
+    }
+}
 
 
 /**
