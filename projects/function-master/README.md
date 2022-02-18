@@ -19,10 +19,13 @@
 
 ## Review Questions from Module One Handbook?
  - what can we `typeof` ?
+    number, string, boolean, undefined 
  - what can't we `typeof` ?
+    null, object, array, date
  - how do we check those things?
  - Array.isArray()
  - null === null
+ - instanceof Date
 
 ## Standard Library Methods You Should Know By Now:
  - Object.keys()
