@@ -10,6 +10,12 @@
 7. In your terminal enter => npm install -g opspark
 8. In your terminal enter => os install
 
+** How to Search for Lodown Repositiory**
+1. Go to 3 vertically aligned lines => File => Open File
+2. In search bar deleter everything except /workspace/
+3. select lodown below
+4. select index.js
+
 
 **How to Save Your SH*T**
 1. In our terminal enter => git add -A
