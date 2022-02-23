@@ -83,7 +83,13 @@ function welcomeMessage(object) {
 //////////////////////////////////////////////////////////////////////
 
 function profileInfo(object) {
-
+//capitalize the first letter of the value of the name property
+var capitalName = ???
+//capitalize the first name of the vale at the species
+ var capitalSpecies = ???
+ //return
+ return capitalName + " is a" + capitalSpecies;   
+object["key"]
 }
 
 //////////////////////////////////////////////////////////////////////

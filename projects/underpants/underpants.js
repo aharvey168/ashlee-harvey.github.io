@@ -4,8 +4,6 @@
 'use strict';
 
 var _ = {};
-
-
 /**
 * START OF OUR LIBRARY!
 * Implement each function below its instructions
@@ -30,12 +28,12 @@ _.identity = function(value) {
 * Objectives:
 *   1) Return the type of <value> as a string
 *       Types are one of:
-*          - "string"
+*          - "string" --
 *          - "array"
 *          - "object"
-*          - "undefined"
-*          - "number"
-*          - "boolean"
+*          - "undefined" --
+*          - "number" --
+*          - "boolean" --
 *          - "null"
 *          - "function"
 * Examples:
@@ -43,8 +41,18 @@ _.identity = function(value) {
 * _.typeOf("javascript") -> "string"
 * _.typeOf([1,2,3]) -> "array"
 */
-_.typeof = function(value) {
-
+_.typeOf = function(value) {
+if (typeof value !== "object") {
+    return typeof value;
+} else if (value === null) {
+    return "null";
+} else if (Array.isArray(value) === true) {
+    return "array";
+} else if (value instanceof Date) {
+    return "date";
+} else {
+    return "object";
+}
 };
 
 /** _.first
@@ -65,6 +73,21 @@ _.typeof = function(value) {
 *   _.first(["a", "b", "c"], 2) -> ["a", "b"]
 */
 
+_.first = function (array, number) {
+    
+    //If <array> is not an array, return []
+    if (Array.isArray(array) === false) {
+        return array;
+    }
+    //If <number> is not given or not a number, return just the first element in <array>
+    if (typeof number !== "number") {
+        return array[0];
+    } else {
+        return array.slice(0,2);
+    }
+}
+
+
 
 /** _.last
 * Arguments:
@@ -83,7 +106,9 @@ _.typeof = function(value) {
 *   _.last(["a", "b", "c"], 1) -> "c"
 *   _.last(["a", "b", "c"], 2) -> ["b", "c"]
 */
+_.last = function(array, number) {
 
+};
 
 /** _.indexOf
 * Arguments:
@@ -92,15 +117,25 @@ _.typeof = function(value) {
 * Objectives:
 *   1) Return the index of <array> that is the first occurrance of <value>
 *   2) Return -1 if <value> is not in <array>
-*   3) Do not use [].indexOf()!
+*   3) Do not use [].indexOf()! 
 * Edge Cases:
 *   1) What if <array> has multiple occurances of val?
 *   2) What if <val> isn't in <array>?
 * Examples:
 *   _.indexOf(["a","b","c"], "c") -> 2
+ index          0   1   2
 *   _.indexOf(["a","b","c"], "d") -> -1
 */
-
+_.indexOf = function(array, value) {
+    //iterate through the input array using a for loop
+    for (var i = 0; i < array.length; i++) {
+        //determine if the current aray value is equal to the input value
+        if(array[i] === value) { //iterate through array2, array[2] ==="c"//"c" === "c"
+            return i;
+        }
+    }
+    return -1;
+}
 
 /** _.contains
 * Arguments:
@@ -116,7 +151,18 @@ _.typeof = function(value) {
 * Examples:
 *   _.contains([1,"two", 3.14], "two") -> true
 */
-
+_.contains = function(array, value) {
+    //iterate through the array using for loop
+    for (var i = 0; i < array.length; i++){
+        //using an if statement, return true if the array contains the value
+        if (array[i] === value) {
+            return true;
+        } else {
+        //otherwise return false
+            return false;
+        }
+    }
+};
 
 /** _.each
 * Arguments:
@@ -133,7 +179,7 @@ _.typeof = function(value) {
 *   _.each(["a","b","c"], function(e,i,a){ console.log(e)});
 *      -> should log "a" "b" "c" to the console
 */
-_.each = function(collection, action) {
+_.each = function each(collection, action) {
     if(Array.isArray(collection)) {
         for(var i = 0; i < collection.length; i++) {
             action(collection[i], i, collection);
@@ -222,7 +268,26 @@ _.each = function(collection, action) {
 * Examples:
 *   _.map([1,2,3,4], function(e){return e * 2}) -> [2,4,6,8]
 */
-
+_.map = function(collection,func) {
+    //create output array
+    let mapped = [];
+    //determine if the inout collection is an aray
+    if (Array.isArray(collection)) {
+        //iterate though the array using  for loop
+        for (var i = 0; i < collection.length; i++)
+            //invoke the inout function on the current element of the array, the current index, 
+            //and the array
+            mapped.push(func(collection[i], i, collection));
+    } else {
+        //else the inout collection is an object
+        //iterate though the object using a for loop
+        for (var key in collection) {
+            let result = func(collection[key], key, collection);
+            mapped.push(result);
+        }
+    }
+        return mapped;
+};
 
 /** _.pluck
 * Arguments:
@@ -324,3 +389,4 @@ if((typeof process !== 'undefined') &&
     // here, export any references you need for tests //
     module.exports = _;
 }
+
