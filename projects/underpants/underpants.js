@@ -77,13 +77,16 @@ _.first = function (array, number) {
     
     //If <array> is not an array, return []
     if (Array.isArray(array) === false) {
-        return array;
-    }
-    //If <number> is not given or not a number, return just the first element in <array>
-    if (typeof number !== "number") {
+        return [];
+    } else if (number < 0) {  //determine if number is negative
+        return [];
+    } else if (number === undefined) { //determine if the input number has not been passed in
+        //return first value of the array
         return array[0];
-    } else {
-        return array.slice(0,2);
+    } else if ( number > array.length) {
+        return array;
+    } else { //else we have regular inputs
+        return array.slice(0, number);
     }
 }
 
@@ -321,7 +324,40 @@ _.map = function(collection,func) {
 *   _.every([2,4,6], function(e){return e % 2 === 0}) -> true
 *   _.every([1,2,3], function(e){return e % 2 === 0}) -> false
 */
-
+_.every = function(collection, func) {
+    //determine if the func is undefined
+    if (func === undefined) {
+        //determine if the input collection is an array
+        if (Array.isArray(collection)) {
+            //iterate through collection
+            for (let i = 0; i < collection.length; i++) {
+                if (!collection[1]) { // if the current value in the array is falsey
+                    return false;
+                }
+            }
+        } else { //else it is not an array
+            //iterating though collection as an object
+            for (let key in collection) {
+                if (!collection[key]) {
+                    return false;
+                }
+            }
+        }
+    } else { //else it is defined
+        //determine if collection is an array  iterate though collection using for loop
+        if(Array.isArray(collection)) {
+            for (let i = 0; i < collection.length; i++) { 
+                if (func(collection[i], i, collection)=== false) { // pass the current vvalue, current index, collection
+                return false;
+                }
+             }
+        }
+    
+        //else it's not an array
+            //iterate through collection using a for loop
+    }
+    return true;
+};
 
 /** _.some
 * Arguments:
@@ -379,6 +415,9 @@ _.map = function(collection,func) {
 *   _.extend(data, {b:"two"}); -> data now equals {a:"one",b:"two"}
 *   _.extend(data, {a:"two"}); -> data now equals {a:"two"}
 */
+_.extend = function(...inputs) { // spread operator takes all of hte objects and puts them in an array
+
+}
 
 //////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////

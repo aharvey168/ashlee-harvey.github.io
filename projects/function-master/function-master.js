@@ -40,8 +40,12 @@ function valuesToString(object) {
 //////////////////////////////////////////////////////////////////////
 
 function arrayOrObject(collection) {
+    //return 'array' if its an array
     if (Array.isArray(collection))  {
         return "array";   
+    //return 'object' if its an object
+    } else {
+        return "object";
     }
 }
 
@@ -73,9 +77,10 @@ function capitalizeAllWords(string) {
 //////////////////////////////////////////////////////////////////////
 
 function welcomeMessage(object) {
+   //Should take an object with a name property and return 'Welcome <Name>!'
     if (object.hasOwnProperty("name")) {
-        return "Welcome" + " " + object["name"[0].toUpperCase()] + "!";
-    }      
+        return "Welcome"  + " " + object["name"][0].toUpperCase() + object["name"].slice(1) + "!";
+    }                               
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -84,14 +89,13 @@ function welcomeMessage(object) {
 
 function profileInfo(object) {
 //capitalize the first letter of the value of the name property
-var capitalName = ???
+var capitalName = object["name"][0].toUpperCase();
 //capitalize the first name of the vale at the species
- var capitalSpecies = ???
+ var capitalSpecies = object["species"][0].toUpperCase();
  //return
  return capitalName + " is a" + capitalSpecies;   
-object["key"]
-}
 
+} 
 //////////////////////////////////////////////////////////////////////
 // Function 9 - Maybe Noises /////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
