@@ -3,6 +3,8 @@
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode
 'use strict';
 
+
+
 var _ = {};
 /**
 * START OF OUR LIBRARY!
@@ -110,6 +112,19 @@ _.first = function (array, number) {
 *   _.last(["a", "b", "c"], 2) -> ["b", "c"]
 */
 _.last = function(array, number) {
+//If <array> is not an array, return []
+if (Array.isArray(array) === false) {
+    return [];
+} else if (number < 0) {  //determine if number is negative
+    return [];
+} else if (number === undefined) { //determine if the input number has not been passed in
+    //return first value of the array
+    return array[array.length - 1];
+} else if ( number > array.length) {
+    return array;
+} else { //else we have regular inputs
+    return array.slice(1, number[number.length - 1]);
+}
 
 };
 
@@ -155,17 +170,13 @@ _.indexOf = function(array, value) {
 *   _.contains([1,"two", 3.14], "two") -> true
 */
 _.contains = function(array, value) {
-    //iterate through the array using for loop
-    for (var i = 0; i < array.length; i++){
-        //using an if statement, return true if the array contains the value
-        if (array[i] === value) {
+        if (array.includes(value)) {
             return true;
         } else {
-        //otherwise return false
             return false;
         }
-    }
-};
+    };
+    
 
 /** _.each
 * Arguments:
@@ -204,6 +215,16 @@ _.each = function each(collection, action) {
 *   _.unique([1,2,2,4,5,6,5,2]) -> [1,2,4,5,6]
 */
 
+_.unique = function(array) {
+var removedArray = [];
+    //iterate through the input array using a for loop
+    for (var i = 0; i < array.length; i++) {
+        if (removedArray.indexOf(array[i]) === -1) {
+            removedArray.push(array[i]);
+        }
+    }
+    return removedArray;
+}
 
 /** _.filter
 * Arguments:
@@ -220,7 +241,17 @@ _.each = function each(collection, action) {
 * Extra Credit:
 *   use _.each in your implementation
 */
-
+_.filter = function(array, func) {
+    var filterArray = [];
+    //call <function> for each element in <array> passing the arguments
+    for(var i = 0; i < array.length; i++) {
+    //return a new array of elements for which calling <function> returned true   
+        if (func(array[i], i, array)) {
+            filterArray.push(array[i]);
+        }
+    }
+    return filterArray;
+};
 
 /** _.reject
 * Arguments:
@@ -234,7 +265,17 @@ _.each = function each(collection, action) {
 * Examples:
 *   _.reject([1,2,3,4,5], function(e){return e%2 === 0}) -> [1,3,5]
 */
-
+_.reject = function(array, func) {
+    var rejectArray = [];
+    //call <function> for each element in <array> passing the arguments
+    for (var i = 0; i < array.length; i++) {
+    //return a new array of elements for which calling <function> returned false 
+        if (!func(array[i], i, array)) {
+            rejectArray.push(array[i]);
+        }
+    }
+    return rejectArray;
+};
 
 /** _.partition
 * Arguments:
@@ -254,7 +295,19 @@ _.each = function each(collection, action) {
 *   }); -> [[2,4],[1,3,5]]
 }
 */
-
+_.partition = function(array, func) {
+    var partArray = [[],[]];
+    //call <function> for each element in <array> passing the arguments
+    for (var i = 0; i < array.length; i++) {
+        //Return an array that is made up of 2 sub arrays 
+        if (!!func(array[i], i, array) === true) {
+            partArray[0].push(array[i]);
+        } else {
+            partArray[1].push(array[i]);
+        }              
+    }
+    return partArray;
+};
 
 /** _.map
 * Arguments:
@@ -271,18 +324,18 @@ _.each = function each(collection, action) {
 * Examples:
 *   _.map([1,2,3,4], function(e){return e * 2}) -> [2,4,6,8]
 */
-_.map = function(collection,func) {
+_.map = function(collection, func) {
     //create output array
     let mapped = [];
-    //determine if the inout collection is an aray
+    //determine if the input collection is an aray
     if (Array.isArray(collection)) {
         //iterate though the array using  for loop
         for (var i = 0; i < collection.length; i++)
-            //invoke the inout function on the current element of the array, the current index, 
-            //and the array
+            //invoke the input/callback function on the current element of the array, the current index, 
+            //and the array itself
             mapped.push(func(collection[i], i, collection));
     } else {
-        //else the inout collection is an object
+        //else the input collection is an object
         //iterate though the object using a for loop
         for (var key in collection) {
             let result = func(collection[key], key, collection);
@@ -303,6 +356,17 @@ _.map = function(collection,func) {
 *   _.pluck([{a: "one"}, {a: "two"}], "a") -> ["one", "two"]
 */
 
+_.pluck = function(array, property) {
+    let pluckedArray = [];
+    //iterate through the array of objects
+    for (var i = 0; i < array.length; i++) {
+        var mapped = _.map(collection, function(i){
+            //Return an array containing the value of <property> for every element in <array> 
+            return pluckedArray.push(array[i][property]);
+        });
+    }
+    return pluckedArray;
+};
 
 /** _.every
 * Arguments:
@@ -352,9 +416,7 @@ _.every = function(collection, func) {
                 }
              }
         }
-    
-        //else it's not an array
-            //iterate through collection using a for loop
+
     }
     return true;
 };
@@ -400,7 +462,24 @@ _.every = function(collection, func) {
 *   _.reduce([1,2,3], function(previousSum, currentValue, currentIndex){ return previousSum + currentValue }, 0) -> 6
 */
 
-
+_.reduce = function(array, func, seed) {
+    //create accummulator variable
+    let accumulator
+    //determine if seed was not passed in
+    if (seed === undefined) {
+         accumulator = array[0];
+         //"continue to the next element and iterate though the input array"
+         for (let i = 1; i < array.length; i++) {
+             accumulator = func(accumulator, array[i], i, array); 
+         }
+    } else {  //else seed waas passed in
+        accumulator = seed;
+        for (let i =0; i < array.length; i++) { 
+            accumulator = func(accumulator, array[i], i, array);
+        }
+    }
+    return accumulator;
+};
 /** _.extend
 * Arguments:
 *   1) An Object

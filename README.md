@@ -23,7 +23,11 @@
 4. In your terminal enter => git commit -m "your description"
 5. In your terminal enter => git push
 
-**How to Save Your SH*T**
+**How to Check Let's Get Functional**
+1. In our terminal enter => cd ..
+2. Do it until you seee the word "workspace"
+
+**How to Save Your All Your SH*T**
 1. In our terminal enter => git add -A
 2. In your terminal enter => git commit -m "your description"
 3. In your terminal enter => git push
