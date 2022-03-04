@@ -537,8 +537,8 @@ _.reduce = function(array, func, seed) {
 */
 _.extend = function(...inputs) { // spread operator takes all of hte objects and puts them in an array
  //copy properties from object 1 to object 2
- Object.assign(...inputs);
- return inputs;
+ var extendedObj = Object.assign(...inputs); 
+ return extendedObj;
 };
 
 //////////////////////////////////////////////////////////////////////
@@ -550,4 +550,4 @@ if((typeof process !== 'undefined') &&
     // here, export any references you need for tests //
     module.exports = _;
 }
-    
+   
