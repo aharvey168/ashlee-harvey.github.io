@@ -360,7 +360,7 @@ _.pluck = function(array, property) {
     let pluckedArray = [];
     //iterate through the array of objects
     for (var i = 0; i < array.length; i++) {
-        var mapped = _.map(collection, function(i){
+        var mapped = map(array, function(i){
             //Return an array containing the value of <property> for every element in <array> 
             return pluckedArray.push(array[i][property]);
         });
@@ -442,6 +442,47 @@ _.every = function(collection, func) {
 *   _.some([1,2,3], function(e){return e % 2 === 0}) -> true
 */
 
+_.some = function(collection, func) {
+    //determine if func has been passed in
+    if(func !== undefined) {
+        //determine if collection is array
+        if(Array.isArray(collection)) {
+            for (let i = 0; i < collection.length; i++) {
+                // pass the current vvalue, current index, collection
+                if (func(collection[i], i, collection) === true) {
+                    return true;
+                }
+            }
+        } else { //its an object
+    //else it is not an array, but an object
+        //iterating though collection as an object
+        for (let key in collection) {
+            if(func(collection[key], key, collection) === true) {
+             return true;
+                    }
+                }
+            }
+         } else {//else func was not passed in
+            //determine if collection is an array
+        if (Array.isArray(collection)) {
+            for (let i = 0; i < collection.length; i++) {
+                // pass the current vvalue, current index, collection
+                if (collection[i]) {
+                    return true;
+                }
+            }      
+        } else { 
+    //else it is not an array, but an object
+        //iterating though collection as an object
+        for (let key in collection) {
+             if (collection[key]) {
+                return true;
+                    }
+                }
+            }          
+        } 
+        return false; 
+    };
 
 /** _.reduce
 * Arguments:
@@ -495,8 +536,10 @@ _.reduce = function(array, func, seed) {
 *   _.extend(data, {a:"two"}); -> data now equals {a:"two"}
 */
 _.extend = function(...inputs) { // spread operator takes all of hte objects and puts them in an array
-
-}
+ //copy properties from object 1 to object 2
+ Object.assign(...inputs);
+ return inputs;
+};
 
 //////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////
@@ -507,4 +550,4 @@ if((typeof process !== 'undefined') &&
     // here, export any references you need for tests //
     module.exports = _;
 }
-
+    

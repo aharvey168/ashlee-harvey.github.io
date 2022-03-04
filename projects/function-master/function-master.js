@@ -88,20 +88,26 @@ function welcomeMessage(object) {
 //////////////////////////////////////////////////////////////////////
 
 function profileInfo(object) {
-//capitalize the first letter of the value of the name property
-var capitalName = object["name"][0].toUpperCase();
-//capitalize the first name of the vale at the species
- var capitalSpecies = object["species"][0].toUpperCase();
+// //capitalize the first letter of the value of the name property
+// var capitalName = object["name"][0].toUpperCase();
+// //capitalize the first name of the vale at the species
+//  var capitalSpecies = object["species"][0].toUpperCase();
  //return
- return capitalName + " is a" + capitalSpecies;   
+ return object["name"][0].toUpperCase() +  "is a" + object["species"][0].toUpperCase(); 
+}
+  
 
-} 
+
 //////////////////////////////////////////////////////////////////////
 // Function 9 - Maybe Noises /////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
 function maybeNoises(object) {
-
+    for(let key in object) {
+        if(object.hasOwnProperty("noises")) {
+            return " ";
+        }
+    }
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -109,7 +115,11 @@ function maybeNoises(object) {
 //////////////////////////////////////////////////////////////////////
 
 function hasWord(string, word) {
-
+if (string === word) {
+    return true;
+} else {
+    return false;
+}
 }
 
 //////////////////////////////////////////////////////////////////////
