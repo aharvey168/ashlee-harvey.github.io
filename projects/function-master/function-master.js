@@ -87,15 +87,22 @@ function welcomeMessage(object) {
 // Function 8 - Profile Info /////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
-function profileInfo(object) {
+// function profileInfo(object) {
 // //capitalize the first letter of the value of the name property
-// var capitalName = object["name"][0].toUpperCase();
+//  let capitalName = object["name"][0].toUpperCase();
 // //capitalize the first name of the vale at the species
-//  var capitalSpecies = object["species"][0].toUpperCase();
- //return
- return object["name"][0].toUpperCase() +  "is a" + object["species"][0].toUpperCase(); 
-}
-  
+//   let capitalSpecies = object["species"][0].toUpperCase();
+//  return capitalName + "is a" + capitalSpecies;
+ 
+// }
+ function profileInfo(object) {
+//capitalize the first letter of the value of the name property
+ let capitalName = object["name"][0].toUpperCase() + object["name"].slice(1);
+//capitalize the first name of the vale at the species
+  let capitalSpecies = object["species"][0].toUpperCase() + object["species"].slice(1);
+ return capitalName + " " + "is a" + " " + capitalSpecies;
+ 
+}; 
 
 
 //////////////////////////////////////////////////////////////////////
@@ -138,8 +145,16 @@ function addFriend (name, object) {
 //////////////////////////////////////////////////////////////////////
 
 function isFriend(name, object) {
+var theFriend = false;
+var allFriends = Object.values(object);
+for (var i =0; i < allFriends.length; i++) {
+    if (allFriends[i] === name) {
+        theFriend = true;
+        }
+    } 
+        return theFriend;
+    }
 
-}
 
 //////////////////////////////////////////////////////////////////////
 // Function 13 - Non-Friends /////////////////////////////////////////
