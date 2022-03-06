@@ -110,24 +110,30 @@ function welcomeMessage(object) {
 //////////////////////////////////////////////////////////////////////
 
 function maybeNoises(object) {
+    noiseArray =[];
     for(let key in object) {
         if(object.hasOwnProperty("noises")) {
-            return " ";
+            return object["noises"].join(" ");
+        } else {
+              return "there are no noises";
         }
     }
 }
+
 
 //////////////////////////////////////////////////////////////////////
 // Function 10 - Has Words ///////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
 function hasWord(string, word) {
-if (string === word) {
-    return true;
-} else {
-    return false;
+for (i = 0; i <  string.length; i++){ 
+    if (string.includes(word)) {
+        return true;
+    } else {
+        return false;
+    }
 }
-}
+};
 
 //////////////////////////////////////////////////////////////////////
 // Function 11 - Add Friend //////////////////////////////////////////
