@@ -110,15 +110,13 @@ function welcomeMessage(object) {
 //////////////////////////////////////////////////////////////////////
 
 function maybeNoises(object) {
-    noiseArray =[];
-    for(let key in object) {
-        if(object.hasOwnProperty("noises")) {
+        if(object.hasOwnProperty("noises") && object["noises"].length !== 0) {
             return object["noises"].join(" ");
         } else {
               return "there are no noises";
         }
-    }
 }
+
 
 
 //////////////////////////////////////////////////////////////////////
@@ -151,14 +149,13 @@ function addFriend (name, object) {
 //////////////////////////////////////////////////////////////////////
 
 function isFriend(name, object) {
-var theFriend = false;
-var allFriends = Object.values(object);
-for (var i =0; i < allFriends.length; i++) {
+var allFriends = object[name];
+for (var i = 0; i < allFriends.length; i++) {
     if (allFriends[i] === name) {
-        theFriend = true;
+      return true;
         }
     } 
-        return theFriend;
+        return false;
     }
 
 
@@ -191,8 +188,15 @@ function removeProperties(object, array) {
 //////////////////////////////////////////////////////////////////////
 
 function dedup(array) {
-
-}
+    var removedArray = [];
+        //iterate through the input array using a for loop
+        for (var i = 0; i < array.length; i++) {
+            if (removedArray.indexOf(array[i]) === -1) {
+                removedArray.push(array[i]);
+            }
+        }
+        return removedArray;
+    }
 
 //////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////

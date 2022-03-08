@@ -356,17 +356,14 @@ _.map = function(collection, func) {
 *   _.pluck([{a: "one"}, {a: "two"}], "a") -> ["one", "two"]
 */
 
-_.pluck = function(array, property) {
-    let pluckedArray = [];
-    //iterate through the array of objects
-    for (var i = 0; i < array.length; i++) {
-        var mapped = map(array, function(i){
+_.pluck = function(array, prop) {
+//iterate through the array of objects
+        var plucked = _.map(array, function(object){
             //Return an array containing the value of <property> for every element in <array> 
-            return pluckedArray.push(array[i][property]);
+            return object[prop];
         });
     }
-    return pluckedArray;
-};
+    
 
 /** _.every
 * Arguments:
