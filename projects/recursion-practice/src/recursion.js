@@ -25,22 +25,50 @@ if(string.length === 1){
   return 0;
 } 
   //recursion
-  return sum(array.slice(1)) + array [0];
+  return sum(array.slice(1)) + array[0];
 };
 
 // 3. Sum all numbers in an array containing nested arrays.
 // Example: arraySum([1,[2,3],[[4]],5]); // 15
 var arraySum = function(array) {
+  //base
+
+  //recursion
+  
 };
 
 // 4. Check if a number is even.
 var isEven = function(n) {
+  //base
+if(n === 0) {
+  return true;
+} else if (n === 1) {
+  return false;
+} else if (n > 0) {
+  //recursion
+  return isEven(n - 2);
+} else {
+  return isEven(-n);
+}
+
+  //recursion
+  
 };
 
 // 5. Sum all integers below a given integer.
 // sumBelow(10); // 45
 // sumBelow(7); // 21
 var sumBelow = function(n) {
+  //base
+  if((n - 1) === 0 || (n + 1) === 0 || n === 0) {
+    return 0;
+  } else if (n < 0) { 
+    return sumBelow(n + 1) + (n + 1);
+  }
+
+  //recursion
+ return sumBelow(n - 1) + (n - 1);
+  
 };
 
 // 6. Get the integers in range (x, y).
@@ -54,7 +82,31 @@ var range = function(x, y) {
 // Example:  exponent(4,3);  // 64
 // https://www.khanacademy.org/computing/computer-science/algorithms/recursive-algorithms/a/computing-powers-of-a-number
 var exponent = function(base, exp) {
+  //base
+  if (exp === 0) {
+    return 1;
+  } else if (exp === 1) {
+    return base; 
+  } else if (exp < 0) {
+    return 1/(exponent(base, -1*base)); 
+  
+  } else if (base < 0) {
+  //recursion
+  return base ^ exponent(base, exp - 1);
+} else {
+  return base ^ exponent(base, exp - 1); 
+}
+
 };
+/*x^8= x^7 * x (need to find x^7)
+x^7= x^6 * x (need to find x^6)
+x^6= x^5 * x (need to find x^5)
+x^5= x^4 * x (need to find x^4)
+x^4= x^3 * x (need to find x^3)
+x^3= x^2 * x (need to find x^2)
+x^2= x^1 * x (need to find x^1)
+x^1= x^0 * x (need to find x^0)
+x^0 = 1 */
 
 // 8. Determine if a number is a power of two.
 // powerOfTwo(1); // true
