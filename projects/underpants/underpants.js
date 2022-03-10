@@ -357,11 +357,11 @@ _.map = function(collection, func) {
 */
 
 _.pluck = function(array, prop) {
-//iterate through the array of objects
-        var plucked = _.map(array, function(object){
-            //Return an array containing the value of <property> for every element in <array> 
-            return object[prop];
-        });
+    var plucked = _.map(array, function(object) {
+    //Return an array containing the value of <property> for every element in <array> 
+        return object[prop];
+    });
+        return plucked;
     }
     
 

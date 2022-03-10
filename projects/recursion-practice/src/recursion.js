@@ -18,14 +18,12 @@ var factorial = function(n) {
 // 2. Compute the sum of an array of integers.
 // Example:  sum([1, 2, 3, 4, 5, 6]);  // 21
 var sum = function(array) {
-  //base
-if(string.length === 1){ 
-  return array[0];
-} else if(string.length === 0){
+  //base- condition to determine when to stop the function
+if(array.length === 0){ 
   return 0;
-} 
+}
   //recursion
-  return sum(array.slice(1)) + array[0];
+  return  array[0] + sum(array.slice(1)) ;
 };
 
 // 3. Sum all numbers in an array containing nested arrays.
@@ -73,7 +71,18 @@ var sumBelow = function(n) {
 
 // 6. Get the integers in range (x, y).
 // Example:  range(2, 9);  // [3, 4, 5, 6, 7, 8]
-var range = function(x, y) {
+var range = function(x, y, output = []) {
+  if (x + 1 === y || x - 1 === y || x ===y) {
+    return output;
+  } 
+  if (x < y) {
+    output.push(x + 1);
+    return range(x + 1, y, output)
+  } else { //
+    output.push(x - 1);
+    return range(x - 1, y, output);
+  }
+  
 };
 
 // 7. Compute the exponent of a number.
@@ -113,10 +122,22 @@ x^0 = 1 */
 // powerOfTwo(16); // true
 // powerOfTwo(10); // false
 var powerOfTwo = function(n) {
+  if(num === 1) {
+    return true;
+  };
+  if(num % 2 !== 0){
+    return false;
+  };
+
+return powerOfTwo(num / 2);
 };
 
 // 9. Write a function that accepts a string a reverses it.
 var reverse = function(string) {
+//base
+
+//recursion
+
 };
 
 // 10. Write a function that determines if a string is a palindrome.
@@ -134,7 +155,7 @@ var modulo = function(x, y) {
 // 12. Write a function that multiplies two numbers without using the * operator  or
 // JavaScript's Math object.
 // ATTENTION DO NOT LEAVE COMMENTS IN THIS FUNCTION. The test is looking for any ('/').
-var multiply = function(x, y) {
+var multiply = function(x, y) { //2*4 // 4*4//
 };
 
 // 13. Write a function that divides two numbers without using the / operator  or

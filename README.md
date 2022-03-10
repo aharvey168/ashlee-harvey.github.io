@@ -26,8 +26,9 @@
 **How to Check Let's Get Functional**
 1. In our terminal enter => cd ..
 2. Do it until you seee the word "workspace"
+3. paste in code from line 19 into the terminal : npm start --prefix ./ashlee-harvey.github.io/projects/let-s-get-functional
 
 **How to Save Your All Your SH*T**
 1. In our terminal enter => git add -A
 2. In your terminal enter => git commit -m "your description"
-3. In your terminal enter =>                                                                                                                                                                                                            
+3. In your terminal enter => git  push                                                                                                                                                                                                      
