@@ -135,13 +135,25 @@ return powerOfTwo(num / 2);
 // 9. Write a function that accepts a string a reverses it.
 var reverse = function(string) {
 //base
-
+if(string.length === 1) {
+  return string;
+}
 //recursion
-
+ return reverse(string.slice(1, string.length)) + string[0];
 };
 
 // 10. Write a function that determines if a string is a palindrome.
 var palindrome = function(string) {
+  //base
+  if(string.length === 0){
+    return true;
+  } else if(string[0] === " " || string[string.length - 1] === " ") {
+    string.replace(/\s/g);
+  } else if (string[0].toLowerCase() !== string[string.length - 1].toLowerCase()) {
+    return false;
+  }
+  //recursion
+  return palindrome(string.slice(1, -1))
 };
 
 // 11. Write a function that returns the remainder of x divided by y without using the
@@ -177,15 +189,39 @@ var gcd = function(x, y) {
 // compareStr('', '') // true
 // compareStr('tomato', 'tomato') // true
 var compareStr = function(str1, str2) {
+  //base
+if(str1[0] !== str2[0]){
+  return false;
+} else if (str1.length === 0 && str2.length === 0) {
+  return true;
+}
+  //recursion
+  return compareStr(str1.slice(1), str2.slice(1));
 };
 
 // 16. Write a function that accepts a string and creates an array where each letter
 // occupies an index of the array.
-var createArray = function(str){
+var createArray = function(str, output=[]){
+  //base
+if(str.length === 0) {
+  return output;
+} else {
+  output.push(str[0]);
+}
+  //recursion
+  return createArray(str.slice(1), output);
 };
 
 // 17. Reverse the order of an array
-var reverseArr = function (array) {
+var reverseArr = function (array, output=[]) {
+  //base
+if(array.length === 0) {
+  return output;
+} else {
+  output.unshift(array[0]);
+}
+  //recursion
+  return reverseArr(array.slice(1), output);
 };
 
 // 18. Create a new array with a given value and length.
