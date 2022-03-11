@@ -227,13 +227,25 @@ if(array.length === 0) {
 // 18. Create a new array with a given value and length.
 // buildList(0,5) // [0,0,0,0,0]
 // buildList(7,3) // [7,7,7]
-var buildList = function(value, length) {
+var buildList = function(value, length, output=[]) {
+  //base
+if(length === 0){
+  return output;
+} else {
+  output.unshift(value);
+}
+  //recursion
+return buildList(value, length - 1, output);
 };
 
 // 19. Count the occurence of a value inside a list.
 // countOccurrence([2,7,4,4,1,4], 4) // 3
 // countOccurrence([2,'banana',4,4,1,'banana'], 'banana') // 2
-var countOccurrence = function(array, value) {
+var countOccurrence = function(array, value, count=0) {
+  //base
+
+  //recursion
+return countOccurrence(array.slice(1, value, count));
 };
 
 // 20. Write a recursive version of map.
