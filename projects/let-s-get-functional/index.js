@@ -48,7 +48,14 @@ var youngestCustomer;
 
 var averageBalance;
 
-var firstLetterCount;
+var firstLetterCount = function(array, letter) {
+    var firstLet = _.filter(array, function(customer){
+        if (letter === letter.toLowerCase() || letter === letter.toLowerCase()){
+            return customer.name[0] === letter; 
+        }  
+    });
+    return firstLet.length;
+};
 
 var friendFirstLetterCount;
 
