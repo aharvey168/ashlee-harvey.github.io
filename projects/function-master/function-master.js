@@ -149,12 +149,9 @@ function addFriend (name, object) {
 //////////////////////////////////////////////////////////////////////
 
 function isFriend(name, object) {
-
-for (var i = 0; i < object.friends.length; i++) {
-    if (object.hasOwnProperty("friends") === name) {
-      return true;
-        }   
-    }
+if (object.hasOwnProperty("friends") === name) {
+    return true;
+    }   
 return false;
 }
 
@@ -165,8 +162,30 @@ return false;
 //////////////////////////////////////////////////////////////////////
 
 function nonFriends(name, array) {
+    var nameList = [];
+    var result = [];
+    var current = null;
+    for(var i=0; i<arr.length; i++){
+        if(name === arr[i].name){
+            current = arr[i];
+        }else{
+            nameList.push(arr[i].name);
+        }
+    }
 
-}
+    if(current === null){
+        return nameList;
+    }
+
+    for(var i=0; i<nameList.length; i++){
+        if(current.friends.indexOf(nameList[i]) == -1){
+            result.push(nameList[i]);
+        }
+    }
+
+    return result;
+    }
+
 
 //////////////////////////////////////////////////////////////////////
 // Function 14 - Update Object ///////////////////////////////////////

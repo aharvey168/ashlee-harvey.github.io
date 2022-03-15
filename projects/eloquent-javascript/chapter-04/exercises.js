@@ -2,9 +2,36 @@
 // range ///////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function range() {
+function range(x, y, z) {
+//determine if z was not passed into the function
+// if (x === y) {
+//   return output;
+// }
+// if (z === undefined) {
+//     //determine if ex is less than z
+//     if (x < y) {
+//       //create for loop starting at x, ending at y that is ascending
+//         //push the current value of i into ouput
+//       }
+//     } else { //x is greater than y
+//       //create for lopp starting at x, ending at ys that is descdening 
+//         //push the current value if i into the output 
 
+
+//   } else {//elsez was passed in
+
+//   }
+// }
 }
+
+/*
+range(1,4) => [1, 2, 3, 4]
+range(4, 1) => [4, 3, 2, 1]
+range(1, 4, 2) = > [ 1, 3]
+range(4, 1, 2) => [2, 1]
+range(1, 1) => []
+range(1, 4, -1) = >[] 
+ */
 
 ////////////////////////////////////////////////////////////////////////////////
 // sum /////////////////////////////////////////////////////////////////////////
@@ -18,15 +45,19 @@ function sum() {
 // reverseArray ////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function reverseArray() {
-
+function reverseArray() { //should produce no side effects
+//returning a reversed copy of the input array
 }
-
+/*var arr = [1, 2, 3]
+reveredArray(arr) => [3, 2, 1]
+console.log(arr);=> [1, 2, 3
+  */
 ////////////////////////////////////////////////////////////////////////////////
 // reverseArrayInPlace /////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function reverseArrayInPlace() {
+function reverseArrayInPlace() { //should alter the input array to a reversed version of it 
+  //directly 
 
 }
 
@@ -34,16 +65,43 @@ function reverseArrayInPlace() {
 // arrayToList /////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function arrayToList() {
-
+function arrayToList(array) { //[10, 20, 30]
+  //create a variable called rest and initialize it to null
+let rest = null;
+//iterate backwards through input array
+for (var i = array.length - 1; i >= 0; i--) {
+  //reassign rest to an object with a value properrty equal to array[1] and rest property
+  rest = { value: array[i], rest };
+  //equal to the current value of rest
+  }
+  return rest;
 }
-
+/*
+arrayToList([10, 20 , 30]);
+{
+  value: 10,
+  rest {
+   value 20,
+   rest: {
+    value: 30
+    rest: null
+  }
+ }
+}
+*/
 ////////////////////////////////////////////////////////////////////////////////
 // listToArray /////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function listToArray() {
-
+function listToArray(obj, output=[]) {
+  //base
+    if(obj.rest === null) {
+      output.push(obj.value);
+      return output;
+    }
+  //recursion
+  output.push(obj["value"]);
+  return listToArray(obj.rest, output);
 }
 
 ////////////////////////////////////////////////////////////////////////////////
