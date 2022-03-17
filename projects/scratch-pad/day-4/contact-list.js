@@ -2,6 +2,8 @@
 
 'use strict';
 
+const object = require("underbar/object");
+
 /**
  * 4: Contact List
  * 
@@ -35,23 +37,24 @@
 
 // YOUR CODE GOES BELOW HERE //
 function makeContact(id, nameFirst, nameLast) {
-
-} 
-
-
-function makeContactList() {
-    /*
-     * You need something here to hold contacts. See length api for a hint:
-     */
-    var contacts;
-    
+    var contact = {};
+    contact.id = id;
+    contact.nameFirst = nameFirst;
+    contact.nameLast = nameLast;
+    return contact;
+}  
+ 
+function makeContactList(){
+    var contacts = [];
     return {
-        // we implemented the length api for you //
-        length: function() {
-            return contacts.length;
-        }
-    }
-}
+         length: function() {
+             return contacts.length;
+        },
+    addContact: function(contact) {
+        contacts.push(contact);
+    },
+    findContact: function(fullName) {
+    
 
 
 
