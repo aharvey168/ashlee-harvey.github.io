@@ -45,20 +45,52 @@ function makeContact(id, nameFirst, nameLast) {
 }  
  
 function makeContactList(){
-    var contacts = [];
-    return {
-         length: function() {
-             return contacts.length;
-        },
+var contacts = [];
+return {
+    length: function() {
+    return contacts.length;
+    },
     addContact: function(contact) {
         contacts.push(contact);
     },
     findContact: function(fullName) {
-    
-
-
-
-
+        //determine if fullName is in the  contact list array
+        for (var i = 0; i < contacts.length; i++) {
+            //if found 
+            if(fullName === contacts[i].nameFirst + " " + contacts[i].nameLast) {
+                //return contact object
+                return contacts[i];
+            }
+          }
+        return undefined; 
+        },
+    removeContact: function(person) {
+        //search through every object
+        contacts.forEach(function(contact, index, collection) {
+            //determine if the current object matches the input object
+            if(person.nameFirst + " " + person.nameLast === contact.nameFirst + " " + contact.nameLast) {
+                //delete the object from the array of objects
+                return contacts.splice(index, 1);
+            } 
+        }); 
+    },
+    printAllContactNames: function(){
+    //create a value to store names
+        var lineBreakList = [];
+       //iterate through the contact list array
+       for(var i = 0; i < contacts.length; i++) {
+           //determine if on last index
+           if(i === contacts.length - 1) { //if true, do what?
+            lineBreakList.push(contacts[i].nameFirst + " " + contacts[i].nameLast);
+           } else {  //else not on last index
+            //do what?
+            lineBreakList.push(contacts[i].nameFirst + " " + contacts[i].nameLast + "\n");
+           }
+       }
+       return lineBreakList.join("");
+    }
+}
+}
 // YOUR CODE GOES ABOVE HERE //
 
 
