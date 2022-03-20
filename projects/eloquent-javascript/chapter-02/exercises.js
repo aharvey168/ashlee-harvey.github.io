@@ -3,49 +3,58 @@
 // triangles ///////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function triangles(chr, n) {
-    if (n === 0) {
-      return "";
-    }
-    return  chr +  triangles(chr, n - 1);
-  };
-  const g = function(max) {
-     const inner = function(n) {
-         if (n > 1) {
-             inner(n-1);
-         }
-         console.log(triangles(' ', max-n) + f('*', (n*2)-1));
-     };
-     inner(max);
-  };
-  g(5);
-
+function triangles() {
+  for (let i = "#"; i.length <= 7; i+= "#") {
+    console.log(i);
+  }
+}
+triangles();
 ////////////////////////////////////////////////////////////////////////////////
 // fizzBuzz ////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
 function fizzBuzz() {
+  let answer;
   for (var i = 1; i <= 15; i++){
-    if (i % 35 === 0 && i % 5 === 0) {
-      console.log("FizzBuzz");
+    if (i % 3 === 0 && i % 5 === 0) {
+      answer = "FizzBuzz";
     } else if (i % 3 === 0) {
-      console.log("Fizz");
+      answer = "Fizz";
     } else if (i % 5 === 0) {
-      console.log("Buzz");
+      answer = "Buzz";
     } else {
-      console.log(i);
+      answer = i;
     }
+    console.log(answer);
   }
 }
+fizzBuzz();
 
 ////////////////////////////////////////////////////////////////////////////////
 // drawChessboard //////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
 function drawChessboard() {
-
+ //create and empty string 
+let output = "";
+var size = 8;
+//set outer loop for rows
+for (i = 0; i <= size; i++) {
+  //set inner loop for columns
+  for (j = 0; j <= size; j++) {
+    //check if sum of the conters is even using ternary operator
+      //if yes; put a space
+      if((i + j) % 2 === 0) { 
+        output += " ";
+      } else {
+        output += "#";
+      }
+  }
+      output += "\n";
+  }
+  console.log(output);
 }
-
+drawChessboard();
 ////////////////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE //////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////

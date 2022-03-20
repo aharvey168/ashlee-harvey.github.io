@@ -31,4 +31,4 @@
 **How to Save Your All Your SH*T**
 1. In our terminal enter => git add -A
 2. In your terminal enter => git commit -m "your description"
-3. In your terminal enter => git  push                                                                                                                                                                                                      
+3. In your terminal enter => git push
