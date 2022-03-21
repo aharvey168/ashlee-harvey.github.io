@@ -3,8 +3,8 @@
 // triangles ///////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function triangles() {
-  for (let i = "#"; i.length <= 7; i+= "#") {
+function triangles(num) {
+  for (let i = "#"; i.length <= num; i+= "#") {
     console.log(i);
   }
 }
@@ -17,11 +17,11 @@ function fizzBuzz() {
   let answer;
   for (var i = 1; i <= 15; i++){
     if (i % 3 === 0 && i % 5 === 0) {
-      answer = "FizzBuzz";
+      answer = "fizzbuzz";
     } else if (i % 3 === 0) {
-      answer = "Fizz";
+      answer = "fizz";
     } else if (i % 5 === 0) {
-      answer = "Buzz";
+      answer = "buzz";
     } else {
       answer = i;
     }
@@ -34,14 +34,14 @@ fizzBuzz();
 // drawChessboard //////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function drawChessboard() {
+function drawChessboard(num) {
  //create and empty string 
 let output = "";
-var size = 8;
+// let size = 8;
 //set outer loop for rows
-for (i = 0; i <= size; i++) {
+for (i = 0; i < num; i++) {
   //set inner loop for columns
-  for (j = 0; j <= size; j++) {
+  for (j = 0; j < num; j++) {
     //check if sum of the conters is even using ternary operator
       //if yes; put a space
       if((i + j) % 2 === 0) { 
@@ -54,7 +54,9 @@ for (i = 0; i <= size; i++) {
   }
   console.log(output);
 }
-drawChessboard();
+drawChessboard(num);
+
+
 ////////////////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE //////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
