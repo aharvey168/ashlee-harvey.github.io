@@ -2,7 +2,28 @@
 // range ///////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function range(x, y, z) {
+function range(start, end, step) {
+  let rangeArray = [];
+  //if the step is greater than 0, add to new array
+  if(start === end) {
+   return rangeArray = [];
+  }
+  if( step > 0) {
+    for (var i = start; i <= end; i += step) {
+      rangeArray.push(i);
+    }
+  } else if(step < 0) {
+    for (var i = start; i >= end; i += step) {
+    return rangeArray = [];
+    }
+  } else {
+    for (var i = start; i <= end; i++) {
+     rangeArray.push(i);
+    }
+  }
+  return rangeArray;
+}
+
 //determine if z was not passed into the function
 // if (x === y) {
 //   return output;
@@ -22,7 +43,7 @@ function range(x, y, z) {
 
 //   }
 // }
-}
+
 
 /*
 range(1,4) => [1, 2, 3, 4]
@@ -37,28 +58,47 @@ range(1, 4, -1) = >[]
 // sum /////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function sum() {
+function sum(numbers) {
+var x = numbers.reduce(function(prev, current){
+  return prev + current;
+}, 0);
+return x;
+}
+////////////////////////////////////////////////////////////////////////////////
+// sum of range ////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 
+function sumOfRange(start, end) {
+  let rangeArray = [];
+  for(let i = start; i <= end; i++) {
+    rangeArray.push(i);
+  }
+  return rangeArray;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 // reverseArray ////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function reverseArray() { //should produce no side effects
+function reverseArray(arr) { //should produce no side effects
+  var newArray = [];
+  for (var i = arr.length - 1; i >= 0; i--) {
+    newArray.push(arr[i]);
+  }
+  return newArray;
 //returning a reversed copy of the input array
 }
 /*var arr = [1, 2, 3]
 reveredArray(arr) => [3, 2, 1]
-console.log(arr);=> [1, 2, 3
+console.log(arr);=> [1, 2, 3]
   */
 ////////////////////////////////////////////////////////////////////////////////
 // reverseArrayInPlace /////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function reverseArrayInPlace() { //should alter the input array to a reversed version of it 
+function reverseArrayInPlace(arr) { //should alter the input array to a reversed version of it 
   //directly 
-
+arr.reverse();
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -108,47 +148,74 @@ function listToArray(obj, output=[]) {
 // prepend /////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function prepend() {
-
+function prepend(element, list) {
+  return {
+    value: element,
+    rest: list
+  };
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 // nth /////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function nth() {
-
+function nth(list, n) {
+  if (!list) {
+    return undefined;
+  } else if (n===0) {
+    return list.value;
+  } else {
+    return nth(list.rest, n -1);
+  }
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 // deepEqual ///////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function deepEqual(x, y) {
+function deepEqual(a, b) {
 //determine if x and y are not objects
-if( typeof x !== "object" && typeof y !== "object") {
-  return x === y; 
-  }
-  //determine if the one of the values is not an object
-  if (typeof x !== "object" || typeof y !== "object") {
-    return false; 
-    }
-    //use the object.keys( method to create an array of keys to both values)
-    let xKeys = Object.keys(x); //["a", "b"]
-    let yKeys = Object.keys(y); //["a", "b"]
-    //determine of the length of arrays DON"T MATCH
-    if(xKeys.length !== yKeys.length){
-      return false;
-    }
-    //iterate through xKey
-    for(let i =0; i < xKeys.length; i++){
-      if (yKeys.includes(xKeys[i]) || deepEqual(x[xKeys[i]], y[xKeys[i]])) {
-        return false;
-      }
-    }
-   return true; 
-};
+// if( typeof x !== "object" && typeof y !== "object") {
+//   return x === y; 
+//   }
+//   //determine if the one of the values is not an object
+//   if (typeof x !== "object" || typeof y !== "object") {
+//     return false; 
+//     }
+//     //use the object.keys( method to create an array of keys to both values)
+//     let xKeys = Object.keys(x); //["a", "b"]
+//     let yKeys = Object.keys(y); //["a", "b"]
+//     //determine of the length of arrays DON"T MATCH
+//     if(xKeys.length !== yKeys.length){
+//       return false;
+//     }
+//     //iterate through xKey
+//     for(let i =0; i < xKeys.length; i++){
+//       if (yKeys.includes(xKeys[i]) || deepEqual(x[xKeys[i]], y[xKeys[i]])) {
+//         return false;
+//       }
+//     }
+//    return true; 
+// };
+if (a === b) return true;
+  
+  if (a == null || typeof a != "object" ||
+      b == null || typeof b != "object")
+    return false;
+  
+  var propsInA = 0, propsInB = 0;
 
+  for (var prop in a)
+    propsInA += 1;
+
+  for (var prop in b) {
+    propsInB += 1;
+    if (!(prop in a) || !deepEqual(a[prop], b[prop]))
+      return false;
+  }
+
+  return propsInA == propsInB;
+}
 ////////////////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE //////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
