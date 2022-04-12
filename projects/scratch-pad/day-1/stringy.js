@@ -165,7 +165,7 @@ function join(stringOne, stringTwo) {
 function longest(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
     //if stringOne < stringTwo
-    if(stringOne.length <= stringTwo) {
+    if(stringOne.length > stringTwo.length) {
         return stringOne;
     } else {  //else stringone > stringTwo
         return stringTwo;
