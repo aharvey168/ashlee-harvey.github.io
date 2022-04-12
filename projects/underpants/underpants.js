@@ -3,9 +3,9 @@
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode
 'use strict';
 
-
-
 var _ = {};
+
+
 /**
 * START OF OUR LIBRARY!
 * Implement each function below its instructions
@@ -20,9 +20,7 @@ var _ = {};
 *   _.identity(5) === 5
 *   _.identity({a: "b"}) === {a: "b"}
 */
-_.identity = function(value) {
-    return value;
-};
+
 
 /** _.typeOf
 * Arguments:
@@ -30,12 +28,12 @@ _.identity = function(value) {
 * Objectives:
 *   1) Return the type of <value> as a string
 *       Types are one of:
-*          - "string" --
+*          - "string"
 *          - "array"
 *          - "object"
-*          - "undefined" --
-*          - "number" --
-*          - "boolean" --
+*          - "undefined"
+*          - "number"
+*          - "boolean"
 *          - "null"
 *          - "function"
 * Examples:
@@ -43,19 +41,7 @@ _.identity = function(value) {
 * _.typeOf("javascript") -> "string"
 * _.typeOf([1,2,3]) -> "array"
 */
-_.typeOf = function(value) {
-if (typeof value !== "object") {
-    return typeof value;
-} else if (value === null) {
-    return "null";
-} else if (Array.isArray(value) === true) {
-    return "array";
-} else if (value instanceof Date) {
-    return "date";
-} else {
-    return "object";
-}
-};
+
 
 /** _.first
 * Arguments:
@@ -75,24 +61,6 @@ if (typeof value !== "object") {
 *   _.first(["a", "b", "c"], 2) -> ["a", "b"]
 */
 
-_.first = function (array, number) {
-    
-    //If <array> is not an array, return []
-    if (Array.isArray(array) === false) {
-        return [];
-    } else if (number < 0) {  //determine if number is negative
-        return [];
-    } else if (number === undefined) { //determine if the input number has not been passed in
-        //return first value of the array
-        return array[0];
-    } else if ( number > array.length) {
-        return array;
-    } else { //else we have regular inputs
-        return array.slice(0, number);
-    }
-}
-
-
 
 /** _.last
 * Arguments:
@@ -111,22 +79,7 @@ _.first = function (array, number) {
 *   _.last(["a", "b", "c"], 1) -> "c"
 *   _.last(["a", "b", "c"], 2) -> ["b", "c"]
 */
-_.last = function(array, number) {
-//If <array> is not an array, return []
-if (Array.isArray(array) === false) {
-    return [];
-} else if (number < 0) {  //determine if number is negative
-    return [];
-} else if (number === undefined) { //determine if the input number has not been passed in
-    //return first value of the array
-    return array[array.length - 1];
-} else if ( number > array.length) {
-    return array;
-} else { //else we have regular inputs
-    return array.slice(1, number[number.length - 1]);
-}
 
-};
 
 /** _.indexOf
 * Arguments:
@@ -135,25 +88,15 @@ if (Array.isArray(array) === false) {
 * Objectives:
 *   1) Return the index of <array> that is the first occurrance of <value>
 *   2) Return -1 if <value> is not in <array>
-*   3) Do not use [].indexOf()! 
+*   3) Do not use [].indexOf()!
 * Edge Cases:
 *   1) What if <array> has multiple occurances of val?
 *   2) What if <val> isn't in <array>?
 * Examples:
 *   _.indexOf(["a","b","c"], "c") -> 2
- index          0   1   2
 *   _.indexOf(["a","b","c"], "d") -> -1
 */
-_.indexOf = function(array, value) {
-    //iterate through the input array using a for loop
-    for (var i = 0; i < array.length; i++) {
-        //determine if the current aray value is equal to the input value
-        if(array[i] === value) { //iterate through array2, array[2] ==="c"//"c" === "c"
-            return i;
-        }
-    }
-    return -1;
-}
+
 
 /** _.contains
 * Arguments:
@@ -169,14 +112,7 @@ _.indexOf = function(array, value) {
 * Examples:
 *   _.contains([1,"two", 3.14], "two") -> true
 */
-_.contains = function(array, value) {
-        if (array.includes(value)) {
-            return true;
-        } else {
-            return false;
-        }
-    };
-    
+
 
 /** _.each
 * Arguments:
@@ -193,17 +129,7 @@ _.contains = function(array, value) {
 *   _.each(["a","b","c"], function(e,i,a){ console.log(e)});
 *      -> should log "a" "b" "c" to the console
 */
-_.each = function each(collection, action) {
-    if(Array.isArray(collection)) {
-        for(var i = 0; i < collection.length; i++) {
-            action(collection[i], i, collection);
-        }
-    } else {
-        for (var key in collection) {
-            action(collection[key], key, collection);
-        }
-    }
-}
+
 
 /** _.unique
 * Arguments:
@@ -215,16 +141,6 @@ _.each = function each(collection, action) {
 *   _.unique([1,2,2,4,5,6,5,2]) -> [1,2,4,5,6]
 */
 
-_.unique = function(array) {
-var removedArray = [];
-    //iterate through the input array using a for loop
-    for (var i = 0; i < array.length; i++) {
-        if (removedArray.indexOf(array[i]) === -1) {
-            removedArray.push(array[i]);
-        }
-    }
-    return removedArray;
-}
 
 /** _.filter
 * Arguments:
@@ -241,17 +157,7 @@ var removedArray = [];
 * Extra Credit:
 *   use _.each in your implementation
 */
-_.filter = function(array, func) {
-    var filterArray = [];
-    //call <function> for each element in <array> passing the arguments
-    for(var i = 0; i < array.length; i++) {
-    //return a new array of elements for which calling <function> returned true   
-        if (func(array[i], i, array)) {
-            filterArray.push(array[i]);
-        }
-    }
-    return filterArray;
-};
+
 
 /** _.reject
 * Arguments:
@@ -265,17 +171,7 @@ _.filter = function(array, func) {
 * Examples:
 *   _.reject([1,2,3,4,5], function(e){return e%2 === 0}) -> [1,3,5]
 */
-_.reject = function(array, func) {
-    var rejectArray = [];
-    //call <function> for each element in <array> passing the arguments
-    for (var i = 0; i < array.length; i++) {
-    //return a new array of elements for which calling <function> returned false 
-        if (!func(array[i], i, array)) {
-            rejectArray.push(array[i]);
-        }
-    }
-    return rejectArray;
-};
+
 
 /** _.partition
 * Arguments:
@@ -295,19 +191,7 @@ _.reject = function(array, func) {
 *   }); -> [[2,4],[1,3,5]]
 }
 */
-_.partition = function(array, func) {
-    var partArray = [[],[]];
-    //call <function> for each element in <array> passing the arguments
-    for (var i = 0; i < array.length; i++) {
-        //Return an array that is made up of 2 sub arrays 
-        if (!!func(array[i], i, array) === true) {
-            partArray[0].push(array[i]);
-        } else {
-            partArray[1].push(array[i]);
-        }              
-    }
-    return partArray;
-};
+
 
 /** _.map
 * Arguments:
@@ -324,26 +208,7 @@ _.partition = function(array, func) {
 * Examples:
 *   _.map([1,2,3,4], function(e){return e * 2}) -> [2,4,6,8]
 */
-_.map = function(collection, func) {
-    //create output array
-    let mapped = [];
-    //determine if the input collection is an aray
-    if (Array.isArray(collection)) {
-        //iterate though the array using  for loop
-        for (var i = 0; i < collection.length; i++)
-            //invoke the input/callback function on the current element of the array, the current index, 
-            //and the array itself
-            mapped.push(func(collection[i], i, collection));
-    } else {
-        //else the input collection is an object
-        //iterate though the object using a for loop
-        for (var key in collection) {
-            let result = func(collection[key], key, collection);
-            mapped.push(result);
-        }
-    }
-        return mapped;
-};
+
 
 /** _.pluck
 * Arguments:
@@ -356,14 +221,6 @@ _.map = function(collection, func) {
 *   _.pluck([{a: "one"}, {a: "two"}], "a") -> ["one", "two"]
 */
 
-_.pluck = function(array, prop) {
-    var plucked = _.map(array, function(object) {
-    //Return an array containing the value of <property> for every element in <array> 
-        return object[prop];
-    });
-        return plucked;
-    }
-    
 
 /** _.every
 * Arguments:
@@ -385,38 +242,7 @@ _.pluck = function(array, prop) {
 *   _.every([2,4,6], function(e){return e % 2 === 0}) -> true
 *   _.every([1,2,3], function(e){return e % 2 === 0}) -> false
 */
-_.every = function(collection, func) {
-    //determine if the func is undefined
-    if (func === undefined) {
-        //determine if the input collection is an array
-        if (Array.isArray(collection)) {
-            //iterate through collection
-            for (let i = 0; i < collection.length; i++) {
-                if (!collection[1]) { // if the current value in the array is falsey
-                    return false;
-                }
-            }
-        } else { //else it is not an array
-            //iterating though collection as an object
-            for (let key in collection) {
-                if (!collection[key]) {
-                    return false;
-                }
-            }
-        }
-    } else { //else it is defined
-        //determine if collection is an array  iterate though collection using for loop
-        if(Array.isArray(collection)) {
-            for (let i = 0; i < collection.length; i++) { 
-                if (func(collection[i], i, collection)=== false) { // pass the current vvalue, current index, collection
-                return false;
-                }
-             }
-        }
 
-    }
-    return true;
-};
 
 /** _.some
 * Arguments:
@@ -439,47 +265,6 @@ _.every = function(collection, func) {
 *   _.some([1,2,3], function(e){return e % 2 === 0}) -> true
 */
 
-_.some = function(collection, func) {
-    //determine if func has been passed in
-    if(func !== undefined) {
-        //determine if collection is array
-        if(Array.isArray(collection)) {
-            for (let i = 0; i < collection.length; i++) {
-                // pass the current vvalue, current index, collection
-                if (func(collection[i], i, collection) === true) {
-                    return true;
-                }
-            }
-        } else { //its an object
-    //else it is not an array, but an object
-        //iterating though collection as an object
-        for (let key in collection) {
-            if(func(collection[key], key, collection) === true) {
-             return true;
-                    }
-                }
-            }
-         } else {//else func was not passed in
-            //determine if collection is an array
-        if (Array.isArray(collection)) {
-            for (let i = 0; i < collection.length; i++) {
-                // pass the current vvalue, current index, collection
-                if (collection[i]) {
-                    return true;
-                }
-            }      
-        } else { 
-    //else it is not an array, but an object
-        //iterating though collection as an object
-        for (let key in collection) {
-             if (collection[key]) {
-                return true;
-                    }
-                }
-            }          
-        } 
-        return false; 
-    };
 
 /** _.reduce
 * Arguments:
@@ -500,24 +285,7 @@ _.some = function(collection, func) {
 *   _.reduce([1,2,3], function(previousSum, currentValue, currentIndex){ return previousSum + currentValue }, 0) -> 6
 */
 
-_.reduce = function(array, func, seed) {
-    //create accummulator variable
-    let accumulator
-    //determine if seed was not passed in
-    if (seed === undefined) {
-         accumulator = array[0];
-         //"continue to the next element and iterate though the input array"
-         for (let i = 1; i < array.length; i++) {
-             accumulator = func(accumulator, array[i], i, array); 
-         }
-    } else {  //else seed waas passed in
-        accumulator = seed;
-        for (let i =0; i < array.length; i++) { 
-            accumulator = func(accumulator, array[i], i, array);
-        }
-    }
-    return accumulator;
-};
+
 /** _.extend
 * Arguments:
 *   1) An Object
@@ -532,11 +300,6 @@ _.reduce = function(array, func, seed) {
 *   _.extend(data, {b:"two"}); -> data now equals {a:"one",b:"two"}
 *   _.extend(data, {a:"two"}); -> data now equals {a:"two"}
 */
-_.extend = function(...inputs) { // spread operator takes all of hte objects and puts them in an array
- //copy properties from object 1 to object 2
- var extendedObj = Object.assign(...inputs); 
- return extendedObj;
-};
 
 //////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////
@@ -547,4 +310,3 @@ if((typeof process !== 'undefined') &&
     // here, export any references you need for tests //
     module.exports = _;
 }
-   
