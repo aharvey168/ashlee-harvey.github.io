@@ -23,9 +23,28 @@
  */
 function range(start, end) {
     // YOUR CODE GOES BELOW HERE //
+    //create an output array for the modified array
+    var output = [];
+    //if start > end
+    //iterate through the range in reverse
+    if (start > end) {
+        //push the integers into the output array
+        for (var i = start; i > end - 1; i--) {
+            output.push(i);
+        }
+    } else if (start < end) { //else if the start < end
+        //iterate through the range
+        for (var i = start; i < end + 1; i++){
+            //push the inegers into the putput array
+            output.push(i);
+        }
+    }
+    return output;
+        
+            
     
-    
-    
+        
+            
     
     // YOUR CODE GOES ABOVE HERE //
 }
