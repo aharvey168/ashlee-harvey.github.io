@@ -35,7 +35,11 @@
 
 // YOUR CODE GOES BELOW HERE //
 function makeContact(id, nameFirst, nameLast) {
-
+var contact = {};
+contact.id = id;
+contact.nameFirst = nameFirst;
+contact.nameLast = nameLast;
+return contact;
 } 
 
 
@@ -43,12 +47,35 @@ function makeContactList() {
     /*
      * You need something here to hold contacts. See length api for a hint:
      */
-    var contacts;
+    var contacts = []; //imagine that contacts array hold contact obj
     
     return {
         // we implemented the length api for you //
         length: function() {
             return contacts.length;
+        },
+        addContact: function(contact){
+            contacts.push(contact);
+        },
+        findContact: function(fullName){
+            //iterate though contacts list array
+        for(var i = 0; i < contacts.length; i++){
+            //if the contact first and last name matches the full name
+            if(contacts[i].nameFirst + " " + contacts[i].nameLast === fullName){
+                //return the contact
+                return contacts[i];
+            } 
+            return undefined;
+        }
+        },
+        removeContact: function(contact){
+            //search though every object
+            contacts.forEach(function(contact){
+                //determine if the currnet object matches the input object
+                if(contact.nameFirst + " " + contacts.nameLast === contact){
+                    contacts. splice(contact.nameFirst + "" + contacts.nameLast);
+                }
+            });
         }
     }
 }
