@@ -69,13 +69,14 @@ function makeContactList() {
         }
         },
         removeContact: function(contact){
-            //search though every object
-            contacts.forEach(function(contact){
-                //determine if the currnet object matches the input object
-                if(contact.nameFirst + " " + contacts.nameLast === contact){
-                    contacts. splice(contact.nameFirst + "" + contacts.nameLast);
-                }
-            });
+            return contacts.splice(contact, 1);
+        },
+        printAllContactNames: function(contact){
+            var array = [];
+            for(var i = 0; i < contacts.length; i++){
+                array.push(contacts[i].nameFirst + " " + contacts[i].nameLast);
+            }
+            return array.join("\n");
         }
     }
 }

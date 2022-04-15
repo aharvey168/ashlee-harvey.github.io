@@ -100,15 +100,17 @@ function modifyStrings(strings, modify) {
     // YOUR CODE BELOW HERE //
     //create a place to collect modified string
     var modified = [];
-   return function(string){
-    //iterates though the string
-    for(var i = 0; i < array.length; i++)
-        //modifies the string
-        //pushes the string into empty array
-        //return the modified array
-   }
-    
-    
+    //iterate through strings array
+    for (var i = 0; i < strings.length; i++){
+        //modify each string
+        var modStr = modify(strings[i]);
+        //push the modified strings into the modified array
+        modified.push(modStr);
+    }
+        
+        
+    //return modified array
+    return modified;
     
     // YOUR CODE ABOVE HERE //
 }
@@ -124,7 +126,16 @@ function modifyStrings(strings, modify) {
  */
 function allStringsPass(strings, test) {
     // YOUR CODE BELOW HERE //
-    
+    //iterarate over the strings
+    for (var i = 0; i < strings.length; i++){
+        //test each current string
+        if(test(strings[i]) === false){
+            return false;
+        } 
+       
+    }
+ return true;
+        
     
     
     
