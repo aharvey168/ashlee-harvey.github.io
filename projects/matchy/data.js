@@ -107,6 +107,27 @@ console.log(animal);
 //////////////////////////////////////////////////////////////////////
 // Step 7 - Making Friends ///////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
+/**
+*/
+
+//Create a variable called `friends`
+ var friends = [];
+
+//Write a function called `getRandom`
+function getRandom(animals){
+ 
+  var randomIndex = (Math.floor(Math.random() * animals.length));
+  return randomIndex;
+};
+ /**Using a random index from this function that you just created, 
+  get a random animal and add its `name` to `friends`. */
+friends.push(animal[randomIndex]);
+
+console.log(friends);
+
+animals["friends"] = friends;
+console.log(friends);
+
 
 
 
