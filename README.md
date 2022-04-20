@@ -22,7 +22,7 @@
 3. In our terminal enter => git add -A
 4. In your terminal enter => git commit -m "your description"
 5. In your terminal enter => git push
-here
+
 **How to Check Let's Get Functional**
 1. In our terminal enter => cd ..
 2. Do it until you seee the word "workspace"

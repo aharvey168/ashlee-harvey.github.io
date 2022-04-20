@@ -115,18 +115,20 @@ console.log(animal);
 
 //Write a function called `getRandom`
 function getRandom(animals){
- 
-  var randomIndex = (Math.floor(Math.random() * animals.length));
-  return randomIndex;
+  var randomIndex = Math.floor(Math.random() * animals.length);
+  return animals[randomIndex];
 };
  /**Using a random index from this function that you just created, 
   get a random animal and add its `name` to `friends`. */
-friends.push(animal[randomIndex]);
+//friends.push(animals[randomIndex].name);
 
+friends.push(getRandom(animals).name);
 console.log(friends);
 
-animals["friends"] = friends;
-console.log(friends);
+/**using **bracket notation**, add the `friends` list as a **property** 
+also named `friends` on one of the animals in the `animals` array */
+animals[0].friends = friends;
+console.log("friends");
 
 
 

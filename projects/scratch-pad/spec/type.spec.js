@@ -45,10 +45,10 @@ describe("#type", function () {
     
     describe('typeOf', function() {
         it('should return a String representing the type of the value provided', function() {
-            expect(typeOf([])).to.equal('array');
-            expect(typeOf('a')).to.equal('string');
+            expect(typeOf([])).to.equal('array'); //
+            expect(typeOf('a')).to.equal('string'); //
             expect(typeOf(null)).to.equal('null');
-            expect(typeOf(NaN)).to.equal('number');
+            expect(typeOf(NaN)).to.equal('number'); //
             expect(typeOf(1)).to.equal('number');
             expect(typeOf(new Date())).to.equal('date');
             expect(typeOf(function () { })).to.equal('function');
