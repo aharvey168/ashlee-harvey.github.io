@@ -124,13 +124,14 @@ return object;
 //////////////////////////////////////////////////////////////////////
 
 function isFriend(name, object) {
-for(var i = 0; i < name.length; i++){
-     if(Object.hasOwnProperty("friends") === name) {
-    return true;
+if(object.hasOwnProperty("friends") === true) {
+    for(var i = 0; i < object["friends"].length; i++){
+         if(object.friends[i] === name) {
+         return true;
+        }  
     }
-    return false;
-    }
-   
+}
+return false;
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -138,7 +139,28 @@ for(var i = 0; i < name.length; i++){
 //////////////////////////////////////////////////////////////////////
 
 function nonFriends(name, array) {
+   var nameList = [];
+    var result = [];
+    var current = null;
+    for(var i=0; i<array.length; i++){
+        if(name === array[i].name){
+            current = array[i];
+        }else{
+            nameList.push(array[i].name);
+        }
+    }
 
+    if(current === null){
+        return nameList;
+    }
+
+    for(var i=0; i<nameList.length; i++){
+        if(current.friends.indexOf(nameList[i]) == -1){
+            result.push(nameList[i]);
+        }
+    }
+
+    return result;
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -146,6 +168,16 @@ function nonFriends(name, array) {
 //////////////////////////////////////////////////////////////////////
 
 function updateObject(object, key, value) {
+    //loop through object key pair
+        //if the key exists
+            //update the property <key> on <object> with new <value>
+        //if the key does not exist
+            //create the key
+    if(object.hasOwnProperty(key)) {
+        return object[key]; //will return value of the key in the object
+    } else {
+        object.key = "value"; // will create a new key  and assign value
+    }
 
 }
 
@@ -154,7 +186,11 @@ function updateObject(object, key, value) {
 //////////////////////////////////////////////////////////////////////
 
 function removeProperties(object, array) {
-
+for (var i = 0; i < array.length; i++) {
+if (object.hasOwnProperty(array[i]) === true) {
+    delete object[array[i]];
+}
+}
 }
 
 //////////////////////////////////////////////////////////////////////
