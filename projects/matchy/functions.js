@@ -61,7 +61,7 @@ function remove(animals, name){
 
 function add(animals, animal){
 for(var i = 0; i < animals.length; i++){
-    if(animal[i].name.length > 0 && animal[i].species.length > 0 && animal.name !== animals[i].name){
+    if(animal.name.length > 0 && animal.species.length > 0 && animal.name !== animals[i].name){
                 animals.push(animal[i]);
         }
     }
