@@ -168,17 +168,8 @@ function nonFriends(name, array) {
 //////////////////////////////////////////////////////////////////////
 
 function updateObject(object, key, value) {
-    //loop through object key pair
-        //if the key exists
-            //update the property <key> on <object> with new <value>
-        //if the key does not exist
-            //create the key
-    if(object.hasOwnProperty(key)) {
-        return object[key]; //will return value of the key in the object
-    } else {
-        object.key = "value"; // will create a new key  and assign value
-    }
-
+object[key] = value;
+  return object;
 }
 
 //////////////////////////////////////////////////////////////////////
