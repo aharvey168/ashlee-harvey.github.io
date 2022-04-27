@@ -21,6 +21,10 @@ var _ = {};
 *   _.identity({a: "b"}) === {a: "b"}
 */
 
+_.identity = function(value) {
+    return value;
+};
+
 
 /** _.typeOf
 * Arguments:
@@ -42,6 +46,29 @@ var _ = {};
 * _.typeOf([1,2,3]) -> "array"
 */
 
+_.typeOf = function(value) {
+  
+    if(typeof value === "number") {
+        return typeof value;
+    } else if(typeof value == "string") {
+        return "string";
+    } else if(typeof value === "boolean") {
+        return "boolean";
+    } else if(Array.isArray(value) === true) {
+        return "array";
+    } else if(value === null)  {   
+        return "null";
+    } else if(typeof value === "function") {
+        return "function";
+    } else if(typeof value === "undefined") {
+       return "undefined";
+    } else if(typeof value === "object" && !(value instanceof Date)){
+        return "object";
+    }
+    return value;
+};
+
+
 
 /** _.first
 * Arguments:
@@ -60,6 +87,21 @@ var _ = {};
 *   _.first(["a", "b", "c"], 1) -> "a"
 *   _.first(["a", "b", "c"], 2) -> ["a", "b"]
 */
+_.first = function(array, number) {
+//If <array> is not an array, return []
+if (Array.isArray(array) === false) {
+    return [];
+} else if (number < 0) {  //determine if number is negative
+    return [];
+} else if (number === undefined) { //determine if the input number has not been passed in
+    //return first value of the array
+    return array[0];
+} else if ( number > array.length) {
+    return array;
+} else { //else we have regular inputs
+    return array.slice(0, number);
+}
+}
 
 
 /** _.last
@@ -80,6 +122,24 @@ var _ = {};
 *   _.last(["a", "b", "c"], 2) -> ["b", "c"]
 */
 
+_.last = function(array, number) {
+    //If <array> is not an array, return []
+    if (Array.isArray(array) === false) {
+        return [];
+    } else if (number < 0) {  //determine if number is negative
+        return [];
+    } else if (number === undefined) { //determine if the input number has not been passed in
+        //return first value of the array
+        return array[array.length - 1];
+    } else if ( number > array.length) {
+        return array;
+    } else { //else we have regular inputs
+        return array.slice(1, number[number.length - 1]);
+    }
+   
+    };
+
+
 
 /** _.indexOf
 * Arguments:
@@ -97,6 +157,17 @@ var _ = {};
 *   _.indexOf(["a","b","c"], "d") -> -1
 */
 
+_.indexOf = function(array, value) {
+    //iterate through the input array using a for loop
+    for (var i = 0; i < array.length; i++) {
+        //determine if the current aray value is equal to the input value
+        if(array[i] === value) { //iterate through array2, array[2] ==="c"//"c" === "c"
+            return i;
+        }
+    }
+    return -1;
+}
+
 
 /** _.contains
 * Arguments:
@@ -113,6 +184,14 @@ var _ = {};
 *   _.contains([1,"two", 3.14], "two") -> true
 */
 
+_.contains = function(array, value) {
+    if (array.includes(value)) {
+          return true;
+      } else {
+          return false;
+      }
+  };
+  
 
 /** _.each
 * Arguments:
@@ -130,6 +209,18 @@ var _ = {};
 *      -> should log "a" "b" "c" to the console
 */
 
+_.each = function(collection, action) {
+    if(Array.isArray(collection)) {
+        for(var i = 0; i < collection.length; i++) {
+            action(collection[i], i, collection);
+        }
+    } else {
+        for (var key in collection) {
+            action(collection[key], key, collection);
+        }
+    }
+}
+
 
 /** _.unique
 * Arguments:
@@ -140,6 +231,17 @@ var _ = {};
 * Examples:
 *   _.unique([1,2,2,4,5,6,5,2]) -> [1,2,4,5,6]
 */
+
+_.unique = function(array) {
+    var removedArray = [];
+        //iterate through the input array using a for loop
+        for (var i = 0; i < array.length; i++) {
+            if (removedArray.indexOf(array[i]) === -1) {
+                removedArray.push(array[i]);
+            }
+        }
+        return removedArray;
+    }
 
 
 /** _.filter
@@ -158,6 +260,18 @@ var _ = {};
 *   use _.each in your implementation
 */
 
+_.filter = function(array, func) {
+    var filterArray = [];
+    //call <function> for each element in <array> passing the arguments
+    for(var i = 0; i < array.length; i++) {
+    //return a new array of elements for which calling <function> returned true  
+        if (func(array[i], i, array)) {
+            filterArray.push(array[i]);
+        }
+    }
+    return filterArray;
+};
+
 
 /** _.reject
 * Arguments:
@@ -171,6 +285,18 @@ var _ = {};
 * Examples:
 *   _.reject([1,2,3,4,5], function(e){return e%2 === 0}) -> [1,3,5]
 */
+
+_.reject = function(array, func) {
+    var rejectArray = [];
+    //call <function> for each element in <array> passing the arguments
+    for (var i = 0; i < array.length; i++) {
+    //return a new array of elements for which calling <function> returned false
+        if (!func(array[i], i, array)) {
+            rejectArray.push(array[i]);
+        }
+    }
+    return rejectArray;
+};
 
 
 /** _.partition
@@ -192,6 +318,20 @@ var _ = {};
 }
 */
 
+_.partition = function(array, func) {
+var partArray = [[],[]];
+    //call <function> for each element in <array> passing the arguments
+    for (var i = 0; i < array.length; i++) {
+        //Return an array that is made up of 2 sub arrays
+        if (!!func(array[i], i, array) === true) {
+            partArray[0].push(array[i]);
+        } else {
+            partArray[1].push(array[i]);
+        }              
+    }
+    return partArray;
+};
+
 
 /** _.map
 * Arguments:
@@ -209,6 +349,28 @@ var _ = {};
 *   _.map([1,2,3,4], function(e){return e * 2}) -> [2,4,6,8]
 */
 
+_.map = function (collection, func) {
+    let mapped = [];
+    //determine if the input collection is an aray
+    if (Array.isArray(collection)) {
+        //iterate though the array using  for loop
+        for (var i = 0; i < collection.length; i++)
+            /*invoke the input/callback function on the current element of
+            the array, the current index*/
+            //and the array itself
+            mapped.push(func(collection[i], i, collection));
+    } else {
+        //else the input collection is an object
+        //iterate though the object using a for loop
+        for (var key in collection) {
+            let result = func(collection[key], key, collection);
+            mapped.push(result);
+        }
+    }
+        return mapped;
+
+}
+
 
 /** _.pluck
 * Arguments:
@@ -221,6 +383,12 @@ var _ = {};
 *   _.pluck([{a: "one"}, {a: "two"}], "a") -> ["one", "two"]
 */
 
+_.pluck = function(array, property){
+var array = [];
+    for(var i = 0; i < array.length; i++){
+        const result = map(c)
+    }
+}
 
 /** _.every
 * Arguments:
@@ -242,6 +410,38 @@ var _ = {};
 *   _.every([2,4,6], function(e){return e % 2 === 0}) -> true
 *   _.every([1,2,3], function(e){return e % 2 === 0}) -> false
 */
+
+_.every = function(collection, func){
+     if (func === undefined) {
+        //determine if the input collection is an array
+        if (Array.isArray(collection)) {
+            //iterate through collection
+            for (let i = 0; i < collection.length; i++) {
+                if (!collection[i]) { // if the current value in the array is falsey
+                    return false;
+                }
+            }
+        } else { //else it is not an array
+            //iterating though collection as an object
+            for (let key in collection) {
+                if (!collection[key]) {
+                    return false;
+                }
+            }
+        }
+    } else { //else it is defined
+        //determine if collection is an array  iterate though collection using for loop
+        if(Array.isArray(collection)) {
+            for (let i = 0; i < collection.length; i++) {
+                if (func(collection[i], i, collection)=== false) { // pass the current vvalue, current index, collection
+                return false;
+                }
+             }
+        }
+ 
+    }
+    return true;
+};
 
 
 /** _.some
