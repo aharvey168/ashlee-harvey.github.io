@@ -60,13 +60,30 @@ function remove(animals, name){
 //////////////////////////////////////////////////////////////////////
 
 function add(animals, animal){
-for(var i = 0; i < animals.length; i++){
-    if(animal.name.length > 0 && animal.species.length > 0 && animal.name !== animals[i].name){
-                animals.push(animal[i]);
-        }
+    var match = false
+    var length = false;
+      // this empty array will hold all of our animals names
+      var arr = []
+      // we push all of the names in the animals array into arr
+      for(var i = 0; i < animals.length; i++) {
+          arr.push(animals[i].name)
+      }
+    // if any of the names match variable match = true
+    for (var i = 0; i < arr.length; i++) {
+    if (arr[i] === animal.name) {
+       match = true
     }
+      }
+      // if animal name and species length is more then 0 length = true
+    if (animal.name.length > 0 && animal.species.length > 0) {
+      length = true
+    }
+    // if match = false and length = true push into the array
+    if (match === false && length === true) {
+      animals.push(animal)
+    }
+      return animals
 }
-
 /**
  * You did it! You're all done with Matchy!
  */

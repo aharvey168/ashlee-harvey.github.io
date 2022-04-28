@@ -3,6 +3,8 @@
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode
 'use strict';
 
+//const { findLastKey } = require("lodash");
+
 var _ = {};
 
 
@@ -383,11 +385,8 @@ _.map = function (collection, func) {
 *   _.pluck([{a: "one"}, {a: "two"}], "a") -> ["one", "two"]
 */
 
-_.pluck = function(array, property){
-var array = [];
-    for(var i = 0; i < array.length; i++){
-        const result = map(c)
-    }
+_.pluck = function(array, prop){
+    return _.map(array, function(obj) {return obj[prop]})
 }
 
 /** _.every
@@ -465,7 +464,49 @@ _.every = function(collection, func){
 *   _.some([1,2,3], function(e){return e % 2 === 0}) -> true
 */
 
+_.some = function(collection, test){
 
+// if test is undefined check if collection is an array or an object
+if (test === undefined) {
+    // if it is an array check if any of the values equal truthy. if so return true
+if (_.typeOf(collection) === "array") {
+    for (var i = 0; i < collection.length; i++) {
+        // else return false
+        if (collection[i]) {
+            return true;
+        } else {return false}
+    }
+} else {
+    // if it is an object check if any values equal truthy. if so return true
+    for (var key in collection) {
+        // else return false
+        if (collection[key]) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+}
+}
+// if function dosent equal undefined
+else {
+if (_.typeOf(collection) === "array") {
+    for (var i = 0; i < collection.length; i++) {
+        if (test(collection[i], i, collection) === true) {
+            return true
+        }
+    }
+} else {
+    for(var key in collection) {
+        if (test(collection[key], key, collection) === true) {
+            return true
+        }
+    }
+}
+}
+return false
+
+}
 /** _.reduce
 * Arguments:
 *   1) An array
@@ -486,6 +527,26 @@ _.every = function(collection, func){
 */
 
 
+//accumalate a value each iteration and return that value at the the end of the function
+_.reduce = function(array, func, seed){
+    //determine if no seed was passed into the function
+    if(seed === undefined){ //if seed 
+        //give seed its value and assign seed the first value in the input array
+        seed = array[0];
+        //iterate through input  array and start interating at the 1 index of the array(continue to the next element)
+        for (let i = 1; i < array.length; i++){
+            /*reassign seed to the result of calling the input  function on the current
+            value of seed, the current item i,n the array, the current index and the collection*/
+            seed = func(seed, array[i], i, array);
+        }
+    } else { //else the seed was passed in
+        for(let i = 0; i < array.length; i++){
+            seed = func(seed, array[i], i, array);
+        }
+    }
+    return seed;
+};
+
 /** _.extend
 * Arguments:
 *   1) An Object
@@ -500,7 +561,12 @@ _.every = function(collection, func){
 *   _.extend(data, {b:"two"}); -> data now equals {a:"one",b:"two"}
 *   _.extend(data, {a:"two"}); -> data now equals {a:"two"}
 */
-
+_.extend = function(object1, object2, object3){
+    if(object3 !== undefined){
+        return Object.assign(object1, object2, object3)
+    }
+    return Object.assign(object1, object2);
+}
 //////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
