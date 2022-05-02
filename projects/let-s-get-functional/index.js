@@ -47,13 +47,29 @@ var oldestCustomer = function(array){
         //if the current customer is oldest, then return the customer nam
         //else the current customer is younger, the next customer is oldest
         var old = array.reduce(function(accumulator, current) {
-            return Math.max(accumulator, current);
+            //determne if accumulator has a greater age than current
+            if(accumulator.age > current.age) {
+               return accumulator;
+            } else {
+                return current;
+            }
         });
-        return old;
+        return old.name;
     }
 
 
-var youngestCustomer;
+var youngestCustomer = function(array) {
+    var young = array.reduce(function(accumulator, current) {
+        //determne if accumulator has a greater age than current
+        if(accumulator.age < current.age) {
+           return accumulator;
+        } else {
+            return current;
+        }
+    });
+    return young.name;
+
+};
 
 var averageBalance = function(array) {
 //     var result = _.filter(array, function(customers) {
@@ -64,8 +80,10 @@ var averageBalance = function(array) {
 //     return result / array.length
 // };
     let total = 0;
-var average = _.forEach((customer, index) =>{
-    total = (total + customer.balance)
+var average = _.each(array, function(customer, index) {
+   
+    total = (total + customer.balance);
+    total.replace
 })
 return total = total / array.length;
 
@@ -99,25 +117,25 @@ var friendsCount = function(array, name) {
     return friendsArray;
     }
 
-var topThreeTags = function(customers) {
-    var topThree = [];
-    var allTags = [];
+// var topThreeTags = function(customers) {
+//     var topThree = [];
+//     var allTags = [];
     
-  var tag =  _.map(customers, func(customer) {
+//   var tag =  _.map(customers, func(customer)) {
       
-    topThree.push(customer.tag);
-    }
-    _.filter(allTags, function(value, curr, collection) {
-          if (test(value.tags === curr[tag])) {
-              topThree.push(curr);
-          }
-      }
+//     topThree.push(customer.tag);
+//     }
+//     _.filter(allTags, function(value, curr, collection) {
+//           if (test(value.tags === curr[tag])) {
+//               topThree.push(curr);
+//           }
+//       }
     
-    }
+//     }
     
-    return topThree;
-    };
-
+//     return topThree;
+//     };
+var topThreeTags;
 var genderCount;
 
 //////////////////////////////////////////////////////////////////////
