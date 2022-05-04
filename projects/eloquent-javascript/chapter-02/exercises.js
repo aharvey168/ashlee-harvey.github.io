@@ -16,46 +16,40 @@ triangles();
 ////////////////////////////////////////////////////////////////////////////////
 
 function fizzBuzz() {
-  for (let i = 1; i <= 15; i++) {
-    // console.log(i);
-    if (i % 3 === 0) {
-        if (i % 5 === 0 && i % 3 === 0) {
-            console.log("fizzbuzz");
-        } else {
-            console.log("fizz");
-        }
-    } else if (i % 5 === 0 && i % 3 !== 0) {
-        if (i % 5 === 0 && i % 3 === 0) {
-            console.log("fizzbuzz");
-        } else {
-            console.log("buzz");
-        }
+  for (var i = 1; i < 101; i++){
+    if(i % 15 === 0) {
+        console.log("fizzbuzz");
+    } else if (i % 3 === 0) {
+        console.log("fizz");
+    } else if ( i % 5 === 0) {
+        console.log("buzz");
     } else {
         console.log(i);
     }
- }
+  }
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 // drawChessboard //////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function drawChessboard() {
-  var size = 8; 
+function drawChessboard(size) {
+  var size = n; 
   var result = "";
  
-  for (var i = 0; i < size; i++) {  
-    for (var j = 0; j < size; j++) {
-      if ((j + i) % 2 == 0)
+  for (var i = 0; i < size; i++) {  //choose the amount of iterations
+    for (var j = 0; j < size; j++) { //tells me how many times to create the space/hashtag pattern
+      if ((j + i) % 2 == 0) {
         result += " ";
-      else
+      } else {
         result += "#";
+      }
     }
-    result = result + "\n";
+    //result 
+    result += "\n";
   }
- 
+  return result;
 }
-
 ////////////////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE //////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
