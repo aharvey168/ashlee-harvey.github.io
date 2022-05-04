@@ -73,7 +73,16 @@ var sumBelow = function(n) {
 
 // 6. Get the integers in range (x, y).
 // Example:  range(2, 9);  // [3, 4, 5, 6, 7, 8]
-var range = function(x, y) {
+var range = function(start, end) {
+    //base
+    if(start === end){
+      return start;
+    }
+   var rangeArray = [];
+   for( var i = start - 1; i < end; i++){
+     rangeArray.push(i);
+   }
+   return rangeArray;
 };
 
 // 7. Compute the exponent of a number.
@@ -89,8 +98,12 @@ var exponent = function(base, exp) {
 // powerOfTwo(16); // true
 // powerOfTwo(10); // false
 var powerOfTwo = function(n) {
-  if (n === 0) return false;
-  if (n === 1) return true;
+  if (n === 0) {
+    return false;
+  }
+  if (n === 1) {
+  return true;
+  }
   if (n%2 !== 0) {
     return false;
   }
