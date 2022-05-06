@@ -3,9 +3,19 @@
 // triangles ///////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function triangles() {
-
+function triangles(num) {
+  //create an empty string named result
+  var result = '';
+  var counter = 1;
+  //make while loop to console.log any number of has tags
+  while (counter <= num) {
+    console.log(result += '#');
+    counter++;
+  }
+  //return result
+  return result;
 }
+
 ////////////////////////////////////////////////////////////////////////////////
 // fizzBuzz ////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
@@ -28,22 +38,36 @@ function fizzBuzz(i) {
 // drawChessboard //////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function drawChessboard(size) { 
-  var result = "";
+function drawChessboard(spread) { 
+//   var result = "";
  
-  for (var i = 0; i <= size; i++) {  //choose the amount of iterations
-    for (var j = 0; j <= size; j++) { //tells me how many times to create the space/hashtag pattern
-      if ((j + i) % 2 == 0) {
-        result += "# ";
-      } else {
-        result += " #";
-      }
-    }
-    //result 
-    result += "\n";
+//   for (var i = 0; i <= size; i++) {  //choose the amount of iterations
+//     for (var j = 0; j <= size; j++) { //tells me how many times to create the space/hashtag pattern
+//       if ((j + i) % 2 == 0) {
+//         result += "# ";
+//       } else {
+//         result += " #";
+//       }
+//     }
+//     //result 
+//     result += "\n";
+//   }
+//  // return result;
+//  console.log(result)
+
+
+var size = 8; 
+var result = "";
+
+for (var i = 0; i < size; i++) {  
+  for (var j = 0; j < size; j++) {
+    if ((j + i) % 2 == 0)
+      result += " ";
+    else
+      result += "#";
   }
- // return result;
- console.log(result)
+  result = result + "\n";
+}
 }
 
 ////////////////////////////////////////////////////////////////////////////////
