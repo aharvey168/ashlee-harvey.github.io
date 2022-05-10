@@ -2,25 +2,31 @@
 // range ///////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function range(start, end, step) {
-  if(step === undefined){
+ function range(start, end, step){ 
+  var rangeArray = [];
+  if(step === undefined) {
     if(start > end){
-      for( var i = end; i >= start; i--){
-        rangeArray.push(i)
-      } else {
-        for (var i = start; i <= end; i++) {
-          rangeArray.push(i)
-        }
+      for (let i = start; i >= end; i--) {
+        rangeArray.push(i);
       }
-    } else { //step was passed in
-      if(start > end) {
-        step = -1
-      } else {
-        step = 1;
+    } else {
+      for(let i = start; i <= end; i++){
+        rangeArray.push(i);
+      }
+    }
+  } else {
+    if(start > end){
+      for (let i = start; i >= end; i -= step) {
+        rangeArray.push(i);
+      }
+    } else {
+      for(let i = start; i <= end; i += step){
+        rangeArray.push(i);
       }
     }
   }
- 
+  return rangeArray;
+}
   // } else if (step !== undefined) {//step was passed in
   //     if( start > end) { // step was not passed in
   //       step = -1;
@@ -51,8 +57,9 @@ function range(start, end, step) {
   //     return end;
   //   }
   // }
-  return rangeArray;
-  
+ 
+  return array;
+}
   // determine if step has been passed in
     // determine if start is greater than end
     // else end is greater than start
@@ -61,7 +68,7 @@ function range(start, end, step) {
     // else end is greater than start
   // }
  
-  }
+
 ////////////////////////////////////////////////////////////////////////////////
 // sum /////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
@@ -78,13 +85,32 @@ function sum(arrayOfNums) {
 // sum  of range////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function sumOfRange(start, end){
-  var arr = [];
-  for (var i = start; i <= end; i++) {
-    arr.push(i); 
+// function sumOfRange(start, end){
+//   var arr = [];
+//   for (var i = start; i <= end; i++) {
+//     arr.push(i); 
+//   }
+//   return arr;
+// };
+function range(start, end, step = start < end ? 1 : -1) {
+  let array = [];
+
+  if (step > 0) {
+    for (let i = start; i <= end; i += step) array.push(i);
+  } else {
+    for (let i = start; i >= end; i += step) array.push(i);
   }
-  return arr;
-};
+  return array;
+}
+
+function sum(array) {
+  let total = 0;
+  for (let value of array) {
+    total += value;
+  }
+  return total;
+}
+
 
 
 ////////////////////////////////////////////////////////////////////////////////
