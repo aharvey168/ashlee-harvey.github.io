@@ -148,8 +148,8 @@ var palindrome = function(str) {
   if (string.length === 1){
     return true;
   } 
-  if (string.charAt(0).replace(/[^A-Za-z0-9_]/g, "") !== str.charAt(str.length-1).replace(/[^A-Za-z0-9_]/g, "")) {
-    return false;
+  if (string.charAt(0).replace(/[^A-Za-z0-9_]/g, " ") !== str.charAt(str.length-1).replace(/[^A-Za-z0-9_]/g, " ")) {
+    return true;
   }
   var string = string.substring(1, string.length-1);
   return palindrome(string);
