@@ -79,13 +79,13 @@ var averageBalance = function(array) {
 //     })
 //     return result / array.length
 // };
-    let total = 0;
-var average = _.each(array, function(customer, index) {
-   
-    total = (total + customer.balance);
-    total.replace
-})
-return total = total / array.length;
+var average = _.reduce(array, function(total, customer) {
+    var balance = customer.balance.replace(/[$,]/g, "");
+    var balanceNum = parseFloat(balance);
+    total = (total + balanceNum);
+    return total;
+}, 0)
+return  average / array.length;
 
 }
 // const avg = scores.reduce((accumulator, currentValue) => accumulator + currentValue)/scores.length;
@@ -104,18 +104,38 @@ var firstLetterCount = function(array, letter) {
     return count.length
 };
 
-var friendFirstLetterCount;
+var friendFirstLetterCount = function(array, name, letter) {
+    let namesArray = _.pluck(array, "name");
+    let friendsArray = _.pluck(array, "friends");
+    var count = 0;
+    var index = 0;
+
+    for (let i = 0; i < namesArray.length; i++){
+        if(name === namesArray[i]){
+            index = i;
+
+        }
+    }
+     let friendList = friendsArray[index];
+     for( let i = 0; i < friendList.length; i++){
+        if (friendList[i].name.charAt(0).toUpperCase() === letter.toUpperCase()) {
+            count++;
+        }
+     }
+     return count;
+}
 
 var friendsCount = function(array, name) {
-
-    var friend = _.filter(array, function(customer){
-        if(customer[name] === name) {
-            return customer[name];
+    var friend = _.reduce(array, function(totalFriends, customer){
+        for (var i = 0; i < customer.friends.length; i++){
+            if(customer.friends[i].name === name) {
+                return totalFriends += 1;
+            } 
         } 
         return friend;
-    })
+    }, 0)
     return friendsArray;
-    }
+}
 
 // var topThreeTags = function(customers) {
 //     var topThree = [];

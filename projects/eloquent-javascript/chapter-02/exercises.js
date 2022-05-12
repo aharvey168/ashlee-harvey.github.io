@@ -38,7 +38,7 @@ function fizzBuzz(i) {
 // drawChessboard //////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function drawChessboard(spread) { 
+function drawChessboard(rows) { 
 //   var result = "";
  
 //   for (var i = 0; i <= size; i++) {  //choose the amount of iterations
@@ -56,18 +56,45 @@ function drawChessboard(spread) {
 //  console.log(result)
 
 
-var size = 8; 
-var result = "";
+// var size = 8; 
+// var result = "";
 
-for (var i = 0; i < size; i++) {  
-  for (var j = 0; j < size; j++) {
-    if ((j + i) % 2 == 0)
-      result += " ";
-    else
-      result += "#";
+// for (var i = 0; i < size; i++) {  
+//   if(i % 2 == 0){
+//     for (var j = 0; j < size; j++) {
+//       if (j % 2 == 0)
+//         result += " ";
+//     }
+//   } else{  
+//     result += "#";
+
+//   } else {
+//       for(j = 0; j < size; j++){
+//         if(j % 2 == 0){
+//           result += "#";
+//         } else {
+//           result += " ";
+//           result
+//         }
+//       }
+// }
+  
+//   }
+//   result = result + "\n";
+// }
+var str = "";
+for (var i = 0; i < rows; i++) {
+  for (var j = 0; j < rows; j++) {
+    if((i+j)%2 ===0){
+      str += ' ';
+    } else {
+      str += '#';
+     
+    }
   }
-  result = result + "\n";
+  str += "\n";
 }
+console.log(str);
 }
 
 ////////////////////////////////////////////////////////////////////////////////

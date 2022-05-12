@@ -2,32 +2,68 @@
 // flatten /////////////////////////////////////////////////////////////////////
 // /////////////////////////////////////////////////////////////////////////////
 
-function flatten() {
-
+function flatten(inputArray) {
+  return inputArray.reduce((a,c) => {
+    if(Array.isArray(c)) {
+      return a.concat(flatten(c))
+    } else {
+      return a.concat(c);
+    }
+  }, [])
 }
 
 // /////////////////////////////////////////////////////////////////////////////
 // loop ////////////////////////////////////////////////////////////////////////
 // /////////////////////////////////////////////////////////////////////////////
 
-function loop() {
+ function loop(start, stop, update, action) {
+  for(let i = start; stop(i); i = update(i)){
+     //use action function on ever value of i
+        action(i);
+   }
+ }
 
-}
 
 // /////////////////////////////////////////////////////////////////////////////
 // every ///////////////////////////////////////////////////////////////////////
 // /////////////////////////////////////////////////////////////////////////////
 
-function every() {
-
+function every(array, test) {
+  for (let element of array) {
+    if (test(element) === false) {
+      return false;
+    }
+  }
+  return true;
 }
 
 // /////////////////////////////////////////////////////////////////////////////
 // dominantDirection ///////////////////////////////////////////////////////////
 // /////////////////////////////////////////////////////////////////////////////
 
-function dominantDirection() {
-
+function dominantDirection(string) {
+  //replace the spaces in the string with empty spaces
+  var newStr = string.replace(/\s/g, ""); //take away whitespaces within a string
+  //create arrays to store rtl and ltr scripts
+  let ltr = [];
+  let rtl = [];
+    //iterate through newStr
+  for (let i = 0; i < newStr.length; i++){
+    let scriptName = characterScript(newStr.charCodeAt(i));
+      //determine if scriptName is NOT null
+    if(scriptName !== null){
+      if(scriptName.direction === "ltr"){
+        ltr.push(scriptName);
+      } else {
+        rtl.push(scriptName);
+      }
+    }
+  }
+  if(ltr.length > rtl.length){
+    return "ltr";
+  } else {
+    return "rtl";
+  }
 }
 
 // /////////////////////////////////////////////////////////////////////////////

@@ -1,9 +1,11 @@
 ////////////////////////////////////////////////////////////////////////////////
 // range ///////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
-
- function range(start, end, step){ 
+function range(start, end, step){ 
   var rangeArray = [];
+  if(start === end){
+    return rangeArray;
+  }
   if(step === undefined) {
     if(start > end){
       for (let i = start; i >= end; i--) {
@@ -15,58 +17,21 @@
       }
     }
   } else {
+    if(step < 0){
+      return rangeArray;
+    }
     if(start > end){
       for (let i = start; i >= end; i -= step) {
         rangeArray.push(i);
       }
-    } else {
+    } else if (start < end){
       for(let i = start; i <= end; i += step){
         rangeArray.push(i);
-      }
-    }
+      } 
+    } 
   }
   return rangeArray;
 }
-  // } else if (step !== undefined) {//step was passed in
-  //     if( start > end) { // step was not passed in
-  //       step = -1;
-  //     } else {
-  //       step = 1;
-  //   }
-  // } 
-  // let rangeArray = []; 
-  // if(step > 0) {
-  //   for (var i = start; i <= end; i+= step){
-  //    rangeArray.push(i);
-  //   }
-  // } else if(step < 0) {
-  //   for(var i = start; i >= end; i+= step){
-  //     rangeArray.push(i);
-  //   }  
-  // } 
-  // if(step !== undefined){
-  //   if(start > end){
-  //     return start; 
-  //   } else {
-  //     return end;
-  //   }
-  // } else {
-  //   if(start > end){
-  //     return start; 
-  //   } else {
-  //     return end;
-  //   }
-  // }
- 
-  return array;
-}
-  // determine if step has been passed in
-    // determine if start is greater than end
-    // else end is greater than start
-  // else step wasn't passed in
-    // determine if start is greater than end
-    // else end is greater than start
-  // }
  
 
 ////////////////////////////////////////////////////////////////////////////////
