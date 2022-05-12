@@ -126,18 +126,24 @@ var friendFirstLetterCount = function(array, name, letter) {
 }
 
 var friendsCount = function(array, name) {
-    var friend = _.reduce(array, function(totalFriends, customer){
-        for (var i = 0; i < customer.friends.length; i++){
-            if(customer.friends[i].name === name) {
-                return totalFriends += 1;
-            } 
-        } 
-        return friend;
-    }, 0)
-    return friendsArray;
+//create an array to hold the names
+var friendNames = [];
+    //iterate through the customers array
+    for (let i = 0; i < array.length; i++){
+        //iterate through the current object's friends array
+        for(let j = 0; j < array[i].friends.length; j++){
+            //determine if current object has a name that matches the input name
+            if(array[i].friends[j].name === name){
+                //if true, push the name into the new array
+                friendNames.push(array[i].name);
+            }     
+        }      
+    }
+    //return output array
+    return friendNames;
 }
 
-// var topThreeTags = function(customers) {
+var topThreeTags = function(customers) {
 //     var topThree = [];
 //     var allTags = [];
     
@@ -154,8 +160,8 @@ var friendsCount = function(array, name) {
 //     }
     
 //     return topThree;
-//     };
-var topThreeTags;
+    };
+
 var genderCount;
 
 //////////////////////////////////////////////////////////////////////
