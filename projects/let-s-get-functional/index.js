@@ -143,26 +143,58 @@ var friendNames = [];
     return friendNames;
 }
 
-var topThreeTags = function(customers) {
-//     var topThree = [];
-//     var allTags = [];
-    
-//   var tag =  _.map(customers, func(customer)) {
-      
-//     topThree.push(customer.tag);
-//     }
-//     _.filter(allTags, function(value, curr, collection) {
-//           if (test(value.tags === curr[tag])) {
-//               topThree.push(curr);
-//           }
-//       }
-    
-//     }
-    
-//     return topThree;
-    };
+    var topThreeTags = function(array){
+        var top3 = [];
+        _.each(array, function(element, index, collection) {
+        _.each(element.tags, function(tag, index, collection) {
+            top3.push(tag);
+        });
+        });
+        var reduced = _.reduce(top3,function(accObj, tags){
+          if(accObj[tags]){
+        accObj[tags] += 1;
+        return accObj;
+          }
+          accObj[tags] = 1;
+          return accObj;
+        },{});
+        var sortedArray = [];
+        for (var key in reduced){
+          sortedArray.push({tag: key, occured: reduced[key]});
+        }
+        sortedArray.sort(function (a,b){
+          return b.occured - a.occured;
+        });
+        return [sortedArray[0].tag, sortedArray[1].tag, sortedArray[2].tag];
+        };
 
-var genderCount;
+        var genderCount = function(array){
+    
+            //assigning and declaring gendes object and using reduce to count the individual genders    
+              let genders = array.reduce((count, person) => {
+                  
+            //if the object key is strictly equal to male      
+                  if(person.gender === 'male'){
+                      
+            //if true a value of one will be added to the male property
+            //if false the property will have a value of zero
+                      count.male = (count.male || 0) + 1;
+                  
+            //the other genders will also follow this logic          
+                  } if(person.gender === 'female'){
+                      count.female = (count.female || 0) + 1;
+                  } if(person.gender === 'non-binary'){
+                      count['non-binary'] = (count.nonbinary || 0) + 1;
+                  }
+                  
+            //returning the count object so gender can use the data      
+                  return count;
+              }, {});
+              
+            //returning count   
+              return genders;
+            
+            };
 
 //////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////
