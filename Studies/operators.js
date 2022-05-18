@@ -11,11 +11,35 @@
 
 
   //TYPES//
-  //Assignment
   
-  //Comparision compare twp values and evaluate to true or false
-     //binary comparison (< > <= >= )
-     // strict comparison: ===, !==
+  //1. Comparision compare twp values and evaluate to true or false
+               //given x = 5
+     
+     =	//equal to	
+      x = 8	// returns false
+
+      ===	//equal value and equal type	
+      x === 5	//returns true
+
+      !=	 //not equal 
+      x != 8	//true
+
+
+      !==	//not equal value or not equal type	
+      x !== 5	//false
+     
+      >	//greater than	
+      x > 8	//false
+
+      <	//less than	
+      x < 8	//true
+
+      >=	//greater than or equal to	
+      x >= 8	//false
+
+      <=	//less than or equal to	
+      x <= 8	//true
+
   //Arithmetic - math function that performs a calculation on two operands
      2 + 3 //Addition
      2 - 3//Subtraction
