@@ -45,6 +45,9 @@
      2 - 3//Subtraction
      2 *  3//Multiplication
      2 / 3 // Division
+     let x = 5;
+    let z = x ** 2; //exponentiation
+    x % 4 == 0 // reminder - true if x is divisible by 4
   // Logical
       && //And Operator
       || //OR Operator

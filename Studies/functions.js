@@ -21,9 +21,9 @@ function name(parameter){
 }
 
 //anonymous functions - defined without a name, usually within another func
-function named(parameter, anonFunc){
-    //perform anonFunc on parameter
-}
+(function () {
+    //...
+ });
 
 //function expression - anonymous function assigned to a variable
 var func = function(parameter1, parameter2){
@@ -43,3 +43,31 @@ function subtract(num1, num2){
 
 console.log(subtract(3, 1)); //prints 2
 //invocation syntax: function name(value, value)
+
+//Scope//
+//Scopes are where variables and constants are accessible. They can either be globally
+//locally scoped. Local scopes are local to the body of a function. This is where the functions variable are 
+//protect their variables
+    function greeting(){
+        var response = "hello";
+        console.log(response); //only available within the function
+    }
+    console.log(response); // prints a reference error
+
+    let x = 2; //global scope
+    function functioning(){
+        x = 10; //function scope
+    }
+    console.log(x); // prints 2
+    functioning(); //invoke the function
+    console.log(x); //prints 10 since the function has been invoked and value is accessible
+
+//Closure//
+//the abiility have access to values by placing them in function bodies
+//Even references variable within the parent scope from the inner function
+function add(x) {
+    return function(y) {
+      return x + y;
+    };
+  }
+

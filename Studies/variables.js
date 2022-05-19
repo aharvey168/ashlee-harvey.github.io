@@ -33,5 +33,42 @@
         var array = [1, 2, 3, 4]; //Array
         var arrowSum = (x, y) => (x + y); //Function
 
+//4Keywords//
+//Var Keyword
+        //description: can be reassigned, hoisted, function scoped only
+        //example:
+        var class = "Bootcamp";
+        //reassignemnt
+        class = "precourse"; //
+//Let Keyword
+        //description: can be reassigned, no hoisting, block scoped, function scoped, block scoped
+        //example
+        let canDrive = true;
+        //reassignemnt
+        canDrive = false; //allowed
+
+//Const Keyword
+        //description: cannot be reassigned, no hoisting, block scoped, function scoped, block scoped
+        //example
+        const fruit = "grapes";
+        //reassignemnt
+        fruit = "strawberries"; //not allowed
+
+//Hoisting//
+//Before a program can be executed, the all declared varriables names with the var keyword and declared functions are 
+// dragged or hoisted ot the top of the program. 
+        console.log(active); //prints undefined
+        var active = true;
+        console.log(active); //prints true
+
+//let and const values are not hoisted are not and when refernces will print a reference error before declaration
+        console.log(animal); //prints reference error
+        console.log(firstName); //prints reference error
+        let animal = "dog";
+        const firstName = "Ashlee"
+
+
+
+
     
  
