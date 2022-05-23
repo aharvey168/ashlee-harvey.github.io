@@ -7,6 +7,16 @@
  * 3. 
  */
 
+//Parameter vs Argumments//
+//parameters are inputs/variable we use when designing a function
+//arguments are real values used to pass into the function when it is invoked
+    function addNumber(x, y){ //x & y are parameters
+         return x + y;
+    }
+
+    var sum = addNumber(5, 6); //5 & 6 are the arguments we use in place of the arguments during invocation
+ 
+
 //Declaration//
 //declaring a function creates the function
 

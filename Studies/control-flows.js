@@ -9,8 +9,12 @@
 
 
 //if statements//
-// you must use an if statement to start a conditional block, then chain together any amount of else-if statemwnts under
-//else must end the chain
+//if statements can be used in isolation
+  //will run if the statement is true
+  //if not, the program will move on to the next statement until one of the is true
+// you must use an if statement to start a conditional block, then chain together any amount of else-if statements under
+//else must be used last in the chain if used at all
+//
 
 /**
  * SYNTAX
@@ -19,7 +23,8 @@
 } else if (condition2) {
   //  block of code to be executed if the condition1 is false and condition2 is true
 } else {
-  //  block of code to be executed if the condition1 is false and condition2 is false
+  //  default block of code to be executed if all previous conditions were false
+  //but the condition is true
 }
  */
     var x = 3;
